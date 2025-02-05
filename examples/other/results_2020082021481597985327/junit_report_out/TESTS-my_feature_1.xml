@@ -1,0 +1,108 @@
+<testsuite errors="1" failures="0" hostname="C02CR7P5ML85" name="my_feature_1.My Feature 1" skipped="0" tests="4" time="0.001457" timestamp="2020-08-20T21:48:47.673561"><testcase classname="my_feature_1.My Feature 1" name="Scenario 1 of Feature 1" status="passed" time="0.000209"><system-out>
+<![CDATA[
+@scenario.begin
+
+  @f1s1
+  Scenario: Scenario 1 of Feature 1
+    Given I am a passing step ... passed in 0.000s
+      """
+      This is just random string in 1st step.
+      Second line of 1st string. And
+      3rd line of 1st string.
+      """
+    Then I another a passing step ... passed in 0.000s
+      """
+      {"first_name": "Admas", "last_name": "Kinfu",
+      "phone": "4081111111"}
+      """
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+Another PASSING
+Another PASSING
+Another PASSING
+
+]]>
+</system-out></testcase><testcase classname="my_feature_1.My Feature 1" name="Scenario 2 of Feature 1" status="failed" time="0.001111"><error message="Failing on purpose" type="Exception">
+<![CDATA[
+Failing step: Then I am a failing step ... failed in 0.001s
+Location: my_feature_1.feature:26
+Traceback (most recent call last):
+  File "/Users/akinfu/misc/other_projects/bdd-python-behave-course/venv_bdd_py3/lib/python3.7/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/akinfu/misc/other_projects/bdd-python-behave-course/venv_bdd_py3/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "steps/steps.py", line 34, in i_am_a_failing_step
+    raise Exception("Failing on purpose")
+Exception: Failing on purpose
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+
+Step FAILING
+Step FAILING
+Step FAILING
+Step FAILING]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+
+  @f1s2
+  Scenario: Scenario 2 of Feature 1
+    Given I am a passing step ... passed in 0.000s
+    Then I am a failing step ... failed in 0.001s
+    Then I am a passing step ... skipped in 0.000s
+    Then I am a passing step ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+
+Step FAILING
+Step FAILING
+Step FAILING
+Step FAILING
+
+]]>
+</system-out></testcase><testcase classname="my_feature_1.My Feature 1" name="Scenario 3 of Feature 1" status="passed" time="7e-05"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Scenario 3 of Feature 1
+    Given I am a passing step ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+
+]]>
+</system-out></testcase><testcase classname="my_feature_1.My Feature 1" name="Scenario 4 of Feature 1" status="passed" time="6.7e-05"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Scenario 4 of Feature 1
+    Given I am a passing step ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+
+]]>
+</system-out></testcase></testsuite>

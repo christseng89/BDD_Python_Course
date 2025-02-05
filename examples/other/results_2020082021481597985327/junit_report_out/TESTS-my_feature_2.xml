@@ -1,0 +1,43 @@
+<testsuite errors="0" failures="0" hostname="C02CR7P5ML85" name="my_feature_2.My Feature 2" skipped="0" tests="2" time="0.000373" timestamp="2020-08-20T21:48:47.676449"><testcase classname="my_feature_2.My Feature 2" name="Scenario 1 of Feature 2" status="passed" time="0.000155"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Scenario 1 of Feature 2
+    Given I am a passing step ... passed in 0.000s
+    Then I am a passing step ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+
+]]>
+</system-out></testcase><testcase classname="my_feature_2.My Feature 2" name="Scenario 2 of Feature 2" status="passed" time="0.000218"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Scenario 2 of Feature 2
+    Given I am a passing step ... passed in 0.000s
+    Then I am a passing step ... passed in 0.000s
+    Then I am a passing step ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+
+]]>
+</system-out></testcase></testsuite>

@@ -1,0 +1,29 @@
+# created by virtualenv automatically
+# Ignore PyCharm project files
+.idea/
+
+# Ignore virtual environments
+.venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore test output and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+utilities/properties.ini
+AllureReports/
+bdd_behave_pom/
+Lib/
+Scripts/

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <style>
+        tr.feature {
+            background: #e1e3e1;
+        }
+        td.scenario_td {
+            width:50%;
+        }
+        
+        td.status {
+            width: 10%;
+            }
+        
+        td.err_sc_name {
+            max-width: 100%;
+        }
+        td.feature_td {
+            min-width:50;
+        }
+        table, th, td {
+            border: 1px solid #1a7ade;
+        }
+
+    </style>
+
+
+    <title>My Test Report</title>
+</head>
+<body>
+<div id="test_summary">
+         <h1> Scenario Pass Rate: 71.43% (5/7)</h1>
+<table class="table-summary">
+    <thead><th></th><th>PASSED</th><th>FAILED</th><th>PASS RATE</th></thead>
+    <tbody>
+        <tr>
+            <th>Features</th><td style="color:green"><center>1</center></td>
+            <td style="color:red"><center>2</center></td>
+            <td><center>33.0 %</center></td>
+        </tr>
+        <tr>
+            <th>Scenario</th><td style="color:green"><center>5</center></td>
+            <td style="color:red"><center>2</center></td>
+            <td><center>71.0 %</center></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br>
+<table>
+    <thead></thead>
+    <tbody>
+    <tr class="feature">
+                            <td class="feature_td">My Feature 1</td>
+                            <td class="status" style="background: #ffaaaa;">failed</td>
+                        </tr><tr class="scenario" scenario_name="Scenario 1 of Feature 1" onClick="na">    
+                                <td class="scenario_td">Scenario 1 of Feature 1</td>
+                                <td class="status" style="color: #1c881c; font-weight: none">PASSED</td>
+                            </tr><tr class="scenario" scenario_name="Scenario 2 of Feature 1" onClick="justalert('Scenario 2 of Feature 1')">    
+                                <td class="scenario_td">Scenario 2 of Feature 1</td>
+                                <td class="status" style="color: red; font-weight: bold">FAILED</td>
+                            </tr><tr class="error_row" scenario_name="Scenario 2 of Feature 1" style="background: #ffaaaa; display: none;">
+                            <td class="err_sc_name scenario_td">Then:I am a failing step</td>
+                            <td>Traceback (most recent call last):<br>  File "/Users/admas/Google Drive/PROJECTS/SuperSQA/Courses/MegaCourses/BDD-Python/BDD-Python/venv_bdd_py3_s3/lib/python3.8/site-packages/behave/model.py", line 1329, in run<br>    match.run(runner.context)<br>  File "/Users/admas/Google Drive/PROJECTS/SuperSQA/Courses/MegaCourses/BDD-Python/BDD-Python/venv_bdd_py3_s3/lib/python3.8/site-packages/behave/matchers.py", line 98, in run<br>    self.func(context, *args, **kwargs)<br>  File "steps/steps.py", line 21, in i_am_a_failing_step<br>    raise Exception("Failing on purpose")<br>Exception: Failing on purpose<br><br>Captured stdout:<br>Step PASS<br>11111<br>Scenario that is failing<br>Step FAIL<br>AAAAAAA<br><br>Captured logging:<br>INFO:root:22222<br>INFO:root:BBBBBBB</td>
+                        </tr><tr class="scenario" scenario_name="Scenario 3 of Feature 1" onClick="na">    
+                                <td class="scenario_td">Scenario 3 of Feature 1</td>
+                                <td class="status" style="color: #1c881c; font-weight: none">PASSED</td>
+                            </tr><tr class="scenario" scenario_name="Scenario 4 of Feature 1" onClick="na">    
+                                <td class="scenario_td">Scenario 4 of Feature 1</td>
+                                <td class="status" style="color: #1c881c; font-weight: none">PASSED</td>
+                            </tr><tr class="feature">
+                            <td class="feature_td">My Feature 2</td>
+                            <td class="status" style="background: #a5f1a5;">passed</td>
+                        </tr><tr class="scenario" scenario_name="Scenario 1 of Feature 2" onClick="na">    
+                                <td class="scenario_td">Scenario 1 of Feature 2</td>
+                                <td class="status" style="color: #1c881c; font-weight: none">PASSED</td>
+                            </tr><tr class="scenario" scenario_name="Scenario 2 of Feature 2" onClick="na">    
+                                <td class="scenario_td">Scenario 2 of Feature 2</td>
+                                <td class="status" style="color: #1c881c; font-weight: none">PASSED</td>
+                            </tr><tr class="feature">
+                            <td class="feature_td">My Feature 3</td>
+                            <td class="status" style="background: #ffaaaa;">failed</td>
+                        </tr><tr class="scenario" scenario_name="Scenario 1 of Feature 3" onClick="justalert('Scenario 1 of Feature 3')">    
+                                <td class="scenario_td">Scenario 1 of Feature 3</td>
+                                <td class="status" style="color: red; font-weight: bold">FAILED</td>
+                            </tr><tr class="error_row" scenario_name="Scenario 1 of Feature 3" style="background: #ffaaaa; display: none;">
+                            <td class="err_sc_name scenario_td">Then:I am a failing step</td>
+                            <td>Traceback (most recent call last):<br>  File "/Users/admas/Google Drive/PROJECTS/SuperSQA/Courses/MegaCourses/BDD-Python/BDD-Python/venv_bdd_py3_s3/lib/python3.8/site-packages/behave/model.py", line 1329, in run<br>    match.run(runner.context)<br>  File "/Users/admas/Google Drive/PROJECTS/SuperSQA/Courses/MegaCourses/BDD-Python/BDD-Python/venv_bdd_py3_s3/lib/python3.8/site-packages/behave/matchers.py", line 98, in run<br>    self.func(context, *args, **kwargs)<br>  File "steps/steps.py", line 21, in i_am_a_failing_step<br>    raise Exception("Failing on purpose")<br>Exception: Failing on purpose<br><br>Captured stdout:<br>Step PASS<br>11111<br>Step PASS<br>11111<br>Scenario that is failing<br>Step FAIL<br>AAAAAAA<br><br>Captured logging:<br>INFO:root:22222<br>INFO:root:22222<br>INFO:root:BBBBBBB</td>
+                        </tr>
+    </tbody>
+
+</table>
+
+    <script>
+        function justalert(sc_name){
+            var locator = 'tr.error_row[scenario_name="' + sc_name + '"]'
+            var errRow = document.querySelector(locator)
+            
+            if ( errRow.style.display == "block") {
+                errRow.style.display = "none";
+            } else {
+                errRow.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

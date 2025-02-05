@@ -1,0 +1,415 @@
+[
+{
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "my_feature_1.feature:8",
+      "name": "Scenario 1 of Feature 1",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "my_feature_1.feature:10",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 9.608268737792969e-05,
+            "status": "passed"
+          },
+          "step_type": "given",
+          "text": [
+            "This is just random string in 1st step.",
+            "Second line of 1st string. And",
+            "3rd line of 1st string."
+          ]
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_1.feature:16",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:17"
+          },
+          "name": "I another a passing step",
+          "result": {
+            "duration": 0.00011324882507324219,
+            "status": "passed"
+          },
+          "step_type": "then",
+          "text": [
+            "{\"first_name\": \"Admas\", \"last_name\": \"Kinfu\",",
+            "\"phone\": \"4081111111\"}"
+          ]
+        }
+      ],
+      "tags": [
+        "f1s1"
+      ],
+      "type": "scenario"
+    },
+    {
+      "keyword": "Scenario",
+      "location": "my_feature_1.feature:23",
+      "name": "Scenario 2 of Feature 1",
+      "status": "failed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "my_feature_1.feature:25",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 8.106231689453125e-05,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_1.feature:26",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:27"
+          },
+          "name": "I am a failing step",
+          "result": {
+            "duration": 0.00102996826171875,
+            "error_message": [
+              "Traceback (most recent call last):",
+              "  File \"/Users/akinfu/misc/other_projects/bdd-python-behave-course/venv_bdd_py3/lib/python3.7/site-packages/behave/model.py\", line 1329, in run",
+              "    match.run(runner.context)",
+              "  File \"/Users/akinfu/misc/other_projects/bdd-python-behave-course/venv_bdd_py3/lib/python3.7/site-packages/behave/matchers.py\", line 98, in run",
+              "    self.func(context, *args, **kwargs)",
+              "  File \"steps/steps.py\", line 34, in i_am_a_failing_step",
+              "    raise Exception(\"Failing on purpose\")",
+              "Exception: Failing on purpose",
+              "",
+              "Captured stdout:",
+              "1ST PASS",
+              "1ST PASS",
+              "1ST PASS",
+              "",
+              "Step FAILING",
+              "Step FAILING",
+              "Step FAILING",
+              "Step FAILING"
+            ],
+            "status": "failed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_1.feature:27",
+          "name": "I am a passing step",
+          "step_type": "then"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_1.feature:28",
+          "name": "I am a passing step",
+          "step_type": "then"
+        }
+      ],
+      "tags": [
+        "f1s2"
+      ],
+      "type": "scenario"
+    },
+    {
+      "keyword": "Scenario",
+      "location": "my_feature_1.feature:31",
+      "name": "Scenario 3 of Feature 1",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "my_feature_1.feature:33",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 6.985664367675781e-05,
+            "status": "passed"
+          },
+          "step_type": "given"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    },
+    {
+      "keyword": "Scenario",
+      "location": "my_feature_1.feature:36",
+      "name": "Scenario 4 of Feature 1",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "my_feature_1.feature:38",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 6.699562072753906e-05,
+            "status": "passed"
+          },
+          "step_type": "given"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "my_feature_1.feature:5",
+  "name": "My Feature 1",
+  "status": "failed",
+  "tags": [
+    "f1"
+  ]
+},
+
+{
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "my_feature_2.feature:6",
+      "name": "Scenario 1 of Feature 2",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "my_feature_2.feature:8",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 8.988380432128906e-05,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_2.feature:9",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 6.508827209472656e-05,
+            "status": "passed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    },
+    {
+      "keyword": "Scenario",
+      "location": "my_feature_2.feature:11",
+      "name": "Scenario 2 of Feature 2",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "my_feature_2.feature:13",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 8.130073547363281e-05,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_2.feature:14",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 6.985664367675781e-05,
+            "status": "passed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_2.feature:15",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 6.699562072753906e-05,
+            "status": "passed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "my_feature_2.feature:3",
+  "name": "My Feature 2",
+  "status": "passed",
+  "tags": []
+},
+
+{
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "my_feature_3.feature:6",
+      "name": "Scenario 1 of Feature 3",
+      "status": "failed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "my_feature_3.feature:8",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.00015282630920410156,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_3.feature:9",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.00012230873107910156,
+            "status": "passed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_3.feature:10",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:27"
+          },
+          "name": "I am a failing step",
+          "result": {
+            "duration": 0.0002377033233642578,
+            "error_message": [
+              "Traceback (most recent call last):",
+              "  File \"/Users/akinfu/misc/other_projects/bdd-python-behave-course/venv_bdd_py3/lib/python3.7/site-packages/behave/model.py\", line 1329, in run",
+              "    match.run(runner.context)",
+              "  File \"/Users/akinfu/misc/other_projects/bdd-python-behave-course/venv_bdd_py3/lib/python3.7/site-packages/behave/matchers.py\", line 98, in run",
+              "    self.func(context, *args, **kwargs)",
+              "  File \"steps/steps.py\", line 34, in i_am_a_failing_step",
+              "    raise Exception(\"Failing on purpose\")",
+              "Exception: Failing on purpose",
+              "",
+              "Captured stdout:",
+              "1ST PASS",
+              "1ST PASS",
+              "1ST PASS",
+              "1ST PASS",
+              "1ST PASS",
+              "1ST PASS",
+              "",
+              "Step FAILING",
+              "Step FAILING",
+              "Step FAILING",
+              "Step FAILING"
+            ],
+            "status": "failed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "my_feature_3.feature:3",
+  "name": "My Feature 3",
+  "status": "failed",
+  "tags": []
+},
+
+{
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "my_feature_smoke_fe.feature:6",
+      "name": "Scenario 1 of Feature 4",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "my_feature_smoke_fe.feature:8",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.00012373924255371094,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "my_feature_smoke_fe.feature:9",
+          "match": {
+            "arguments": [],
+            "location": "steps/steps.py:8"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 9.107589721679688e-05,
+            "status": "passed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "my_feature_smoke_fe.feature:3",
+  "name": "My Feature 4",
+  "status": "passed",
+  "tags": []
+}
+]

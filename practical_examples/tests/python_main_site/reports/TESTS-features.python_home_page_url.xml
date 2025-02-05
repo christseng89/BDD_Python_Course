@@ -1,0 +1,49 @@
+<testsuite errors="1" failures="0" hostname="Admass-MBP.T-mobile.com" name="features.python_home_page_url.Verifying the home page url goes to the right place" skipped="0" tests="2" time="4.597222" timestamp="2020-04-17T19:36:18.419424"><testcase classname="features.python_home_page_url.Verifying the home page url goes to the right place" name="The Python home page should have correct title" status="passed" time="2.558932"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: The Python home page should have correct title
+    Given I go to the site "python.org" ... passed in 2.553s
+    Then the page title should be "Welcome to Python.org" ... passed in 0.006s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Navigating to the site: https://www.python.org/ 
+The actual title is: Welcome to Python.org
+The expected title is: Welcome to Python.org
+The page title is as expected.
+
+]]>
+</system-out></testcase><testcase classname="features.python_home_page_url.Verifying the home page url goes to the right place" name="The Python home page should have correct url" status="failed" time="2.03829"><error message="'NoneType' object has no attribute 'strip'" type="AttributeError">
+<![CDATA[
+Failing step: Given I go to the site "www.python.org" ... failed in 2.038s
+Location: features/python_home_page_url.feature:13
+Traceback (most recent call last):
+  File "/Users/admas/Google Drive/PROJECTS/SuperSQA/Courses/MegaCourses/BDD-Python/venv_bdd_py3/lib/python3.7/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/admas/Google Drive/PROJECTS/SuperSQA/Courses/MegaCourses/BDD-Python/venv_bdd_py3/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "/Users/admas/Google Drive/PROJECTS/SuperSQA/Courses/MegaCourses/BDD-Python/BDD-Python/practical_examples/BDDCommon/CommonSteps/webstepscommon.py", line 19, in go_to_url
+    context.driver = webcommon.go_to(url)
+  File "/Users/admas/Google Drive/PROJECTS/SuperSQA/Courses/MegaCourses/BDD-Python/BDD-Python/practical_examples/BDDCommon/CommonFuncs/webcommon.py", line 28, in go_to
+    url = url.strip()
+AttributeError: 'NoneType' object has no attribute 'strip'
+
+Captured stdout:
+Navigating to the site: None]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: The Python home page should have correct url
+    Given I go to the site "www.python.org" ... failed in 2.038s
+    Then current url should be "www.python.org" ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Navigating to the site: None
+
+]]>
+</system-out></testcase></testsuite>

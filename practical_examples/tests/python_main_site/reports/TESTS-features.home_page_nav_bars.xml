@@ -1,0 +1,17 @@
+<testsuite errors="0" failures="0" hostname="Admass-MBP.T-mobile.com" name="features.home_page_nav_bars.Navigation bars in the home page" skipped="0" tests="1" time="3.640378" timestamp="2020-04-17T19:36:13.817159"><testcase classname="features.home_page_nav_bars.Navigation bars in the home page" name="Verify the navigation bars on home page are visible" status="passed" time="3.640378"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Verify the navigation bars on home page are visible
+    Given I go to the site "python.org" ... passed in 3.561s
+    Then the "main navigation" bar should be visible ... passed in 0.034s
+    And the "top navigation" bar should be visible ... passed in 0.026s
+    And the "options" bar should be visible ... passed in 0.020s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+Navigating to the site: https://www.python.org/ 
+
+]]>
+</system-out></testcase></testsuite>

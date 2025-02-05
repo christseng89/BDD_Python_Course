@@ -1,0 +1,51 @@
+<testsuite errors="1" failures="0" hostname="C02CR7P5ML85" name="my_feature_3.My Feature 3" skipped="0" tests="1" time="0.000513" timestamp="2020-08-20T21:48:47.679269"><testcase classname="my_feature_3.My Feature 3" name="Scenario 1 of Feature 3" status="failed" time="0.000513"><error message="Failing on purpose" type="Exception">
+<![CDATA[
+Failing step: Then I am a failing step ... failed in 0.000s
+Location: my_feature_3.feature:10
+Traceback (most recent call last):
+  File "/Users/akinfu/misc/other_projects/bdd-python-behave-course/venv_bdd_py3/lib/python3.7/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/akinfu/misc/other_projects/bdd-python-behave-course/venv_bdd_py3/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "steps/steps.py", line 34, in i_am_a_failing_step
+    raise Exception("Failing on purpose")
+Exception: Failing on purpose
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+
+Step FAILING
+Step FAILING
+Step FAILING
+Step FAILING]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Scenario 1 of Feature 3
+    Given I am a passing step ... passed in 0.000s
+    Then I am a passing step ... passed in 0.000s
+    Then I am a failing step ... failed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+1ST PASS
+
+Step FAILING
+Step FAILING
+Step FAILING
+Step FAILING
+
+]]>
+</system-out></testcase></testsuite>
