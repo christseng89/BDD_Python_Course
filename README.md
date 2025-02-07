@@ -105,3 +105,24 @@ behave examples\displaying_output\displaying_output_demo.feature
 behave examples\displaying_output\displaying_output_demo.feature --no-capture
 
 ```
+### Running all files DEMO
+```cmd
+behave "examples\running_tests\Test Group"
+behave "examples\running_tests\Test Group" --no-capture
+    Feature: Test Cases Group 1 # examples/running_tests/Test Group/test_case_1.feature:2
+    ...
+    Feature: Test Cases Group 2 # examples/running_tests/Test Group/test_case_2.feature:2
+    ...
+    Feature: Negative test for login # examples/running_tests/Test Group/login/login_negative/login_negative.feature:2
+    ...
+    4 features passed, 0 failed, 0 skipped
+    ...
+```
+
+```cmd
+behave "examples\running_tests\Test Group\login" --no-capture
+    ...
+    2 features passed, 0 failed, 0 skipped
+    ...
+
+```
