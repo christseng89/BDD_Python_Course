@@ -89,3 +89,19 @@ BDD_Python_Course
 behave examples\directory_structure\feature_template.feature
 
 ```
+### Running 1 file DEMO
+```cmd
+behave "examples\running_tests\Test Group\test_case_1.feature"
+behave "examples\running_tests\Test Group\test_case_2.feature"
+behave "examples\running_tests\Test Group\login\login.feature"
+
+REM Running with print() in steps
+behave "examples\running_tests\Test Group\test_case_1.feature" --no-capture
+behave "examples\running_tests\Test Group\test_case_2.feature" --no-capture
+behave "examples\running_tests\Test Group\login\login.feature" --no-capture
+
+REM Output with logger.info() and print() in steps via environment.py
+behave examples\displaying_output\displaying_output_demo.feature 
+behave examples\displaying_output\displaying_output_demo.feature --no-capture
+
+```
