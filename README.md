@@ -134,4 +134,27 @@ behave examples\displaying_output\displaying_output_demo.feature --no-capture --
 behave examples\displaying_output\displaying_output_demo.feature --no-capture --no-logcapture --logging-format "Info: %(message)s"
 ```
 
- 
+## Parameterization
+
+### Example
+Given I am 'New' User
+Given I am 'Existing' User
+@given('I am {user_type} User')
+
+Then the page should '' contain the text Welcome
+Then the page should 'not' contain the text Welcome
+@then('the page should {contain} contain the text Welcome')
+
+The user buy the order with 'credit' card
+The user buy the order with 'debit' card
+@then('the user buy the order with {card_type} card')
+
+Given I am using 'English' language
+Given I am using 'Spanish' language
+@given('I am using {lang_type} language')
+
+### Parameterization DEMO
+```cmd
+behave examples\step_parameters\step_parameters_parse.feature
+behave examples\step_parameters\step_parameters_parse.feature --no-capture
+```
