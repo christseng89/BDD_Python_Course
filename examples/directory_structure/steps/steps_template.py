@@ -1,95 +1,97 @@
-# Created by samfi at 2025/2/6
-from behave import given, when, then
+from behave import given, when, then, step
 
 # Background steps
-@given('Background given step')
-def background_given_step(context):
-    pass
+given("Background given step")(lambda context: print("Executing Background Given Step"))
+when("Background when step")(lambda context: print("Executing Background When Step"))
 
-@when('Background when step')
-def background_when_step(context):
-    pass
+# Scenario1 steps
+@given("Scenario1 given step 1")
+def step_impl(context):
+    print("Executing Scenario1 Given Step 1")
 
-# Scenario 1 steps
-@given('Scenario1 given step')
-def scenario1_given_step(context):
-    pass
+@given("Scenario1 given step 2")
+def step_impl(context):
+    print("Executing Scenario1 Given Step 2")
 
-@when('Scenario1 when step')
-def scenario1_when_step(context):
-    pass
+@when("Scenario1 when step 1")
+def step_impl(context):
+    print("Executing Scenario1 When Step 1")
 
-@when('Scenario1 when and step 1')
-def scenario1_when_and_step1(context):
-    pass
+@when("Scenario1 when step 2")
+def step_impl(context):
+    print("Executing Scenario1 When Step 2")
 
-@when('Scenario1 when and step 2')
-def scenario1_when_and_step2(context):
-    pass
+@when("Scenario1 when step 3")
+def step_impl(context):
+    print("Executing Scenario1 When Step 3")
 
-@when('Scenario1 but step')
-def scenario1_but_step(context):
-    pass
+@when("Scenario1 when but step")
+def step_impl(context):
+    print("Executing Scenario1 When But Step")
 
-@then('Scenario1 then step 1')
-def scenario1_then_step1(context):
-    pass
+@then("Scenario1 then step 1")
+def step_impl(context):
+    print("Executing Scenario1 Then Step 1")
 
-@then('Scenario1 then step 2')
-def scenario1_then_step2(context):
-    pass
+@then("Scenario1 then step 2")
+def step_impl(context):
+    print("Executing Scenario1 Then Step 2")
 
-@then('Scenario1 then and step 1')
-def scenario1_then_and_step1(context):
-    pass
+@then("Scenario1 then step 3")
+def step_impl(context):
+    print("Executing Scenario1 Then Step 3")
 
-@then('Scenario1 then and step 2')
-def scenario1_then_and_step2(context):
-    pass
+@then("Scenario1 then step 4")
+def step_impl(context):
+    print("Executing Scenario1 Then Step 4")
 
-@then('Scenario1 then but step')
-def scenario1_then_but_step(context):
-    pass
+@then("Scenario1 then but step")
+def step_impl(context):
+    print("Executing Scenario1 Then But Step")
 
-# Scenario 2 steps
-@given('Scenario2 given step')
-def scenario2_given_step(context):
-    pass
+# Scenario2 steps
+@given("Scenario2 given step 1")
+def step_impl(context):
+    print("Executing Scenario2 Given Step 1")
 
-@when('Scenario2 when step')
-def scenario2_when_step(context):
-    pass
+@given("Scenario2 given step 2")
+def step_impl(context):
+    print("Executing Scenario2 Given Step 2")
 
-@when('Scenario2 when and step 1')
-def scenario2_when_and_step1(context):
-    pass
+@when("Scenario2 when step 1")
+def step_impl(context):
+    print("Executing Scenario2 When Step 1")
 
-@when('Scenario2 when and step 2')
-def scenario2_when_and_step2(context):
-    pass
+@when("Scenario2 when step 2")
+def step_impl(context):
+    print("Executing Scenario2 When Step 2")
 
-@when('Scenario2 but step')
-def scenario2_but_step(context):
-    pass
+@when("Scenario2 when step 3")
+def step_impl(context):
+    print("Executing Scenario2 When Step 3")
 
-@then('Scenario2 then step 1')
-def scenario2_then_step1(context):
-    pass
+@when("Scenario2 when but step")
+def step_impl(context):
+    print("Executing Scenario2 When But Step")
 
-@then('Scenario2 then step 2')
-def scenario2_then_step2(context):
-    pass
+@then("Scenario2 then step 1")
+def step_impl(context):
+    print("Executing Scenario2 Then Step 1")
 
-@then('Scenario2 then and step 1')
-def scenario2_then_and_step1(context):
-    pass
+@then("Scenario2 then step 2")
+def step_impl(context):
+    print("Executing Scenario2 Then Step 2")
 
-@then('Scenario2 then and step 2')
-def scenario2_then_and_step2(context):
-    pass
+@then("Scenario2 then step 3")
+def step_impl(context):
+    print("Executing Scenario2 Then Step 3")
 
-@then('Scenario2 then but step')
-def scenario2_then_but_step(context):
-    pass
+@then("Scenario2 then step 4")
+def step_impl(context):
+    print("Executing Scenario2 Then Step 4")
 
-# Scenario Outline reuses Scenario1 Steps
+@then("Scenario2 then but step")
+def step_impl(context):
+    print("Executing Scenario2 Then But Step")
+
+# Scenario1 Outline steps (Reusing Scenario1 steps)

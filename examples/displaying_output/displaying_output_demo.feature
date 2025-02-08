@@ -9,7 +9,7 @@ Scenario: A test that will PASS (stdout demo)
 
 
 
-Scenario: A test that will FAIL (stdout demo)
+Scenario: B test that will FAIL (stdout demo)
 
     Given I am at the home page
     When I click on my account

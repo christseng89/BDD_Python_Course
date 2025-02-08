@@ -26,6 +26,7 @@ print_logger.addFilter(CustomLogFilter())
 for handler in logging.getLogger().handlers:
     handler.setFormatter(log_formatter)
 
+# https://behave.readthedocs.io/en/stable/behave.html
 def before_all(context):
     """Disables Behave's built-in capturing to remove 'Captured stdout' and 'Captured logging'."""
     context.config.stdout_capture = False

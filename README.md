@@ -126,3 +126,12 @@ behave "examples\running_tests\Test Group\login" --no-capture
     ...
 
 ```
+### Displaying Output
+```cmd
+behave examples\displaying_output\displaying_output_demo.feature
+behave examples\displaying_output\displaying_output_demo.feature --no-capture
+behave examples\displaying_output\displaying_output_demo.feature --no-capture --no-logcapture
+behave examples\displaying_output\displaying_output_demo.feature --no-capture --no-logcapture --logging-format "Info: %(message)s"
+```
+
+ 
