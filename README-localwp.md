@@ -56,5 +56,24 @@ https://woocommerce.com/document/importing-woocommerce-sample-data/ => Re-downlo
   Choose File -> WooCommerce Sample Data -> Upload file and import
   (sample_products.csv, sample_products.xml)
     - Shop Manager: admin
-    - v Download and import file attachment
+    - 'v' Download and import file attachment
     - Submit
+
+### Setup Home Page and Registration
+- Settings -> Reading
+    - Your homepage displays: A static page (select below)
+        - Homepage: Shop
+    - Save changes
+
+- Settings -> General
+    - Membership
+        - Anyone can register
+    - Save changes
+  
+- WooCommerce -> Settings -> Accounts & Privacy
+    - Checkout
+        - Enable login during checkout
+    - Account creation
+        - During checkout
+        - Allow customers to create an account on the "My account" page
+    - Save changes
