@@ -36,3 +36,25 @@ https://localwp.com/ => Download LocalWP
     - Search: storefront
     - Install => Activate
 - Open Site => Browser (http://mylocalwp.local/)
+
+### Install Plugin
+- WP Admin => Plugins => Add New Plugin
+    - Search: woocommerce
+    - Install Now => Activate
+
+- WooCommerce => Settings => General
+    - Store Address
+        - Country / Region: China
+    - Currency Options
+        - Currency: US Dollars ($)
+    - Save changes
+
+### Adding sample products
+https://woocommerce.com/document/importing-woocommerce-sample-data/ => Re-download WooCommerce
+
+- Tools -> Import -> WordPress -> Install Now -> Run Importer -> 
+  Choose File -> WooCommerce Sample Data -> Upload file and import
+  (sample_products.csv, sample_products.xml)
+    - Shop Manager: admin
+    - v Download and import file attachment
+    - Submit
