@@ -77,3 +77,19 @@ https://woocommerce.com/document/importing-woocommerce-sample-data/ => Re-downlo
         - During checkout
         - Allow customers to create an account on the "My account" page
     - Save changes
+
+### Use 'Coupons' to checkout
+- WooCommerce -> Coupons
+    - Add Coupon
+        - Coupon code: 10off
+        - Description: 10% off
+        - Discount type: Percentage discount
+        - Coupon amount: 10
+        - Allow free shipping: ✅
+        - Coupon expiry date (optional): 2025-02-28
+        - Usage restriction
+            - Minimum spend: 20
+            - Individual use only: ✅
+        - Usage limits
+            - Usage limit per coupon: 1
+        - Publish
