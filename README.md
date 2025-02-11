@@ -168,3 +168,13 @@ behave examples\sharing_data_globally\sharing_data_globally_demo.feature
 behave examples\sharing_data_globally\sharing_data_globally_demo.feature --no-capture
 ```
 
+## Practical Example
+
+### Project Setup Overview (Building a Python Package)
+pip install setuptools
+
+cd practical_examples
+pip install .
+pip uninstall PythonBDDtutorial -y
+
+pip install .

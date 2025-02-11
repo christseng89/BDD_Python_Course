@@ -28,3 +28,7 @@ bdd_behave_pom/
 Lib/
 Scripts/
 woocommerce-sample-data/
+
+build/
+dist/
+*.egg-info/

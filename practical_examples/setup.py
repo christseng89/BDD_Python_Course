@@ -12,5 +12,4 @@ setup(name='PythonBDDtutorial',
             'BDDCommon.CommonSteps',
             'BDDCommon.CommonConfigs'
       ],
-     )
-
+)
