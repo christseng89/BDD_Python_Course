@@ -101,3 +101,18 @@ https://woocommerce.com/document/importing-woocommerce-sample-data/ => Re-downlo
 
 - WooCommerce -> Settings -> Orders
     - Order -> Status (Completed) -> Update
+
+### Setup and Test WooCommerce Rest API
+https://woocommerce.com/document/woocommerce-rest-api/
+- WooCommerce -> Settings -> Advanced -> REST API
+    - Add key
+        - Description: Test
+        - User: admin
+        - Permissions: Read/Write -> Generate API key
+
+Customer Key: ck_b05a8107856c44b688ae9f6263a549dccc84af16
+Secret Key: cs_718fb79852941b5cfe7288788296626c3a6558ae
+
+https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
+
+Test by Postman / Python / etc.

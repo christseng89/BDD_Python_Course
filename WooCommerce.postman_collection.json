@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "2fcec0e4-40ce-440c-8f1b-48b91db99c01",
+		"name": "WooCommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2908296"
+	},
+	"item": [
+		{
+			"name": "List of Products",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "consumerSecret",
+							"value": "cs_718fb79852941b5cfe7288788296626c3a6558ae",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "ck_b05a8107856c44b688ae9f6263a549dccc84af16",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mylocalwp.local/wp-json/wc/v3/products",
+					"protocol": "http",
+					"host": [
+						"mylocalwp",
+						"local"
+					],
+					"path": [
+						"wp-json",
+						"wc",
+						"v3",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all product categories",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "consumerSecret",
+							"value": "cs_718fb79852941b5cfe7288788296626c3a6558ae",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "ck_b05a8107856c44b688ae9f6263a549dccc84af16",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mylocalwp.local/wp-json/wc/v3/products/categories",
+					"protocol": "http",
+					"host": [
+						"mylocalwp",
+						"local"
+					],
+					"path": [
+						"wp-json",
+						"wc",
+						"v3",
+						"products",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a product category",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "consumerSecret",
+							"value": "cs_718fb79852941b5cfe7288788296626c3a6558ae",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "ck_b05a8107856c44b688ae9f6263a549dccc84af16",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"All kinds of clothes.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mylocalwp.local/wp-json/wc/v3/products/categories/28",
+					"protocol": "http",
+					"host": [
+						"mylocalwp",
+						"local"
+					],
+					"path": [
+						"wp-json",
+						"wc",
+						"v3",
+						"products",
+						"categories",
+						"28"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
