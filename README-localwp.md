@@ -130,3 +130,6 @@ Test by Postman / Python / etc.
 SELECT * FROM local.wp_wc_orders;
 
 https://github.com/woocommerce/woocommerce/wiki/Database-Description
+
+### Docker Swarm
+https://github.com/dhinojosac/localwp2docker-wordpress
