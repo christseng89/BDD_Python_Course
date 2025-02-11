@@ -93,3 +93,11 @@ https://woocommerce.com/document/importing-woocommerce-sample-data/ => Re-downlo
         - Usage limits
             - Usage limit per coupon: 1
         - Publish
+      
+### Checkout with "Cash on Delivery"
+- WooCommerce -> Settings -> Payments
+    - Cash on delivery
+        - Enable: ✅
+
+- WooCommerce -> Settings -> Orders
+    - Order -> Status (Completed) -> Update
