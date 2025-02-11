@@ -158,3 +158,13 @@ Given I am using 'Spanish' language
 behave examples\step_parameters\step_parameters_parse.feature
 behave examples\step_parameters\step_parameters_parse.feature --no-capture
 ```
+
+### Sharing Data Between Steps
+context.variable_name = value
+
+### Sharing Data Between Steps DEMO
+```cmd
+behave examples\sharing_data_globally\sharing_data_globally_demo.feature
+behave examples\sharing_data_globally\sharing_data_globally_demo.feature --no-capture
+```
+
