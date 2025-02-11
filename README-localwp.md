@@ -116,3 +116,17 @@ Secret Key: cs_718fb79852941b5cfe7288788296626c3a6558ae
 https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
 
 Test by Postman / Python / etc.
+
+### Connecting to Database
+- LocalWP -> Database -> OpenAdminerEvo
+    - Server: localhost
+- MySQL Workbench
+    - Connection Name: LocalWP
+    - Connection Method: Standard (TCP/IP)
+    - Port: 10005
+    - Username: root
+    - Password: root
+
+SELECT * FROM local.wp_wc_orders;
+
+https://github.com/woocommerce/woocommerce/wiki/Database-Description
