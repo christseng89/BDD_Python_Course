@@ -8,3 +8,4 @@ Feature: Navigation bars in the home page
       Then the "main navigation" bar should be visible
       And the "top navigation" bar should be visible
       And the "options" bar should be visible
+      And the "main header" bar should be visible

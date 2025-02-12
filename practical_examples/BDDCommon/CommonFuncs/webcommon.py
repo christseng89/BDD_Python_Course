@@ -4,31 +4,40 @@ Functions that are not test or feature specific.
 """
 
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from BDDCommon.CommonConfigs.configurations import get_config
 
 
 def go_to(url, browser_type=None):
     """
-    Function to start instance of the specified browser and navigate to the specified url.
+    Start a browser instance and navigate to the specified URL.
 
-    :param url: the url to navigate to
-    :param browser_type: the type of browser to start (Default is Firefox)
+    :param url: The URL to navigate to.
+    :param browser_type: The browser type (Default is Chrome).
 
-    :return: driver: browser instance
+    :return: WebDriver instance.
     """
-    if not browser_type:
-        # create instance of Firefox driver the browser type is not specified
-        driver = webdriver.Chrome()
-    elif browser_type.lower() == 'chrome':
-        # create instance of the Chrome driver
-        driver = webdriver.Chrome()
-    else:
-        raise Exception("The browser type '{}' is not supported".format(browser_type))
 
-    # clean the url and go to the url
+    chrome_driver_path = get_config()['WEBDRIVER']['chrome_driver_path']
+
+    # Set Chrome options to bypass SSL errors
+    chrome_options = Options()
+    chrome_options.add_argument("--ignore-certificate-errors")
+    chrome_options.add_argument("--ignore-ssl-errors=yes")
+    chrome_options.add_argument("--disable-gpu")
+
+    # Create WebDriver instance
+    driver = webdriver.Chrome(service=Service(chrome_driver_path), options=chrome_options)
+
+    # Maximize the window
+    driver.maximize_window()
+
+    # Navigate to the URL
     url = url.strip()
     driver.get(url)
 
-    return driver
+    return driver  # ✅ Return driver instead of modifying `context`
 
 
 def assert_page_title(context, expected_title):
@@ -45,7 +54,7 @@ def assert_page_title(context, expected_title):
 
     assert expected_title == actual_title, "The title is not as expected." \
                                            " Expected: {}, Actual: {}".format(expected_title, actual_title)
-    print("The page title is as expected.")
+    print(f"✅ The page title '{expected_title}' is as expected.")
 
 
 def assert_current_url(context, expected_url):
@@ -64,7 +73,7 @@ def assert_current_url(context, expected_url):
     assert current_url == expected_url, "The current url is not as expected." \
                                         " Actual: {}, Expected: {}".format(current_url, expected_url)
 
-    print("The page url is as expected.")
+    print(f"✅ The page URL is as expected '{current_url}'.")
 
 #======================================================================================#
 def find_element(context, locator_attribute, locator_text):

@@ -13,7 +13,7 @@ def go_to_url(context, site):
     :param url:
     """
     url = urlconfig.URLCONFIG.get(site)
-    print("Navigating to the site: {}".format(url))
+    print("✅ Navigating to the site: {}".format(url))
 
 
     context.driver = webcommon.go_to(url)
@@ -40,3 +40,4 @@ def verify_current_url(context, expected_url):
     """
 
     webcommon.assert_current_url(context, expected_url)
+    print (f"✅ Current URL is as expected: {expected_url}")

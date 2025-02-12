@@ -3,12 +3,14 @@ from BDDCommon.CommonSteps.webstepscommon import *
 from BDDCommon.CommonConfigs import locatorsconfig
 from BDDCommon.CommonFuncs import webcommon
 
-
 @then('the "{nav_bar}" bar should be visible')
 def verify_nav_bars_visible(context, nav_bar):
 
     # import pdb; pdb.set_trace()
-    expected_bars = ['main navigation', 'top navigation', 'options']
+    # expected_bars = ['main navigation', 'top navigation', 'options']
+    # ✅ Dynamically extract expected bars from locatorsconfig.py
+    expected_bars = list(locatorsconfig.LOCATORS.keys())
+
     if nav_bar not in expected_bars:
         raise Exception("The passed in nav_bar type is not one of expected."
                             "Actual: {}, Expected in: {}".format(nav_bar, expected_bars))
@@ -18,5 +20,5 @@ def verify_nav_bars_visible(context, nav_bar):
     locator_text = locator_info['locator']
 
     nav_element = webcommon.find_element(context, locator_type, locator_text)
-
+    print (f"✅ Nav bar '{nav_bar}' is visible")
     webcommon.assert_element_visible(nav_element)

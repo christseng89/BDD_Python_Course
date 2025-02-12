@@ -171,6 +171,7 @@ behave examples\sharing_data_globally\sharing_data_globally_demo.feature --no-ca
 ## Practical Example
 
 ### Project Setup Overview (Building a Python Package)
+```cmd
 pip install setuptools
 
 cd practical_examples
@@ -178,3 +179,13 @@ pip install .
 pip uninstall PythonBDDtutorial -y
 
 pip install .
+```
+
+### Test Cases Group 1 Part 1 (python.org)
+```cmd
+behave tests\python_main_site\features\python_home_page_url.feature
+behave tests\python_main_site\features\home_page_nav_bars.feature
+
+behave tests\python_main_site\features\python_home_page_url.feature --no-capture
+behave tests\python_main_site\features\home_page_nav_bars.feature --no-capture
+```

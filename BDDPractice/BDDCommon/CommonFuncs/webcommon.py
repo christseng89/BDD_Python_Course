@@ -67,7 +67,7 @@ def assert_page_title(context, expected_title):
 
     assert expected_title == actual_title, "The title is not as expected." \
                                            " Expected: {}, Actual: {}".format(expected_title, actual_title)
-    print("The page title is as expected.")
+    print(f"✅ The page title '{expected_title}' is as expected.")
 
 
 def assert_current_url(context, expected_url):
@@ -86,7 +86,7 @@ def assert_current_url(context, expected_url):
     assert current_url == expected_url, "The current url is not as expected." \
                                         " Actual: {}, Expected: {}".format(current_url, expected_url)
 
-    print("The page url is as expected.")
+    print("✅ The page URL is as expected.")
 
 #======================================================================================#
 def url_contains(context, text):
