@@ -274,3 +274,11 @@ Background:
       | 1  | Alice | 1000    |
       | 2  | Bob   | 500     |
 ```
+## Scenario Outline
+```cmd
+behave examples\scenario_outline\scenario_outline_demo.feature --no-capture --no-logcapture
+behave examples\scenario_outline\scenario_outline_demo_2.feature --no-capture --no-logcapture
+
+behave examples\scenario_outline\examples_in_slides --no-capture --no-logcapture
+behave examples\scenario_outline --no-capture --no-logcapture --tags=tag1
+```
