@@ -133,3 +133,37 @@ https://github.com/woocommerce/woocommerce/wiki/Database-Description
 
 ### Docker Swarm
 https://github.com/dhinojosac/localwp2docker-wordpress
+
+### WP SMTP Plugin
+
+1. Install WP Mail SMTP
+    Plugins => Search (WP Mail SMTP by WPForms) => Install Now => Activate
+2. Generate a Gmail App Password
+    Go to Google App Passwords
+    Select Mail as the app
+    Choose Other (Custom Name) and enter "LocalWP SMTP"
+    Copy the generated password (you’ll use this instead of your Gmail password)
+
+3. Configure WP Mail SMTP (Free Version)
+
+    Go to WP Mail SMTP → Settings
+    Choose Other SMTP as the mailer
+    Enter these settings:
+
+        SMTP Host: smtp.gmail.com
+        SMTP Port: 587
+        Encryption: TLS
+        Authentication: Yes
+        Username: your_email@gmail.com
+        Password: [Your App Password from Step 1]
+        Save changes and send a test email
+
+4. WooCommerce -> Settings -> Site visibility -> Live -> Save changes
+
+5. Plugins -> Add New -> Upload Plugin -> 
+    - Choose File: wp-smtp.zip
+    - Install Now
+    - Activate Plugin
+
+### Backup and Restore
+Install plugin -> Migration, Backup, Staging – WPvivid Backup & Migration -> Activate -> Backup Now

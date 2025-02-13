@@ -189,3 +189,88 @@ behave tests\python_main_site\features\home_page_nav_bars.feature
 behave tests\python_main_site\features\python_home_page_url.feature --no-capture
 behave tests\python_main_site\features\home_page_nav_bars.feature --no-capture
 ```
+
+## Setup and Tear Down
+
+### Setup and Tear Down (Concept)
+- Setup: Before all tests (Feature, Scenario, or Step)
+- Tear Down: After all tests (Feature, Scenario, or Step)
+
+behave support setup and tear down via environment.py
+
+#### Examples
+- Setup
+  - Open browser
+  - Login
+  - Create a new Database 
+  - Create a new table
+  - Create a new user
+  - Create files to be used for testing
+  - Congigure things like logging, browser type, etc.
+- Tear Down
+  - Close browser
+  - Logout
+  - Delete a database
+  - Delete a table
+  - Delete the user
+  - Delete files created for testing
+  - Reset configurations 
+
+#### Environmental Controls
+https://behave.readthedocs.io/en/stable/tutorial.html#environmental-controls
+- before_step(context, step), after_step(context, step)
+    These run before and after every step.
+- before_scenario(context, scenario), after_scenario(context, scenario)
+    These run before and after each scenario is run.
+- before_feature(context, feature), after_feature(context, feature)
+    These run before and after each feature file is exercised.
+- before_tag(context, tag), after_tag(context, tag)
+    These run before and after a section tagged with the given name. They are invoked for each tag encountered in the order they’re found in the feature file. See controlling things with tags.
+- before_all(context), after_all(context)
+    These run before and after the whole shooting match.
+
+### Setup and Tear Down DEMO
+// enhance environment.py
+
+```cmd
+cd practical_examples
+behave tests\python_main_site\features\home_page_nav_bars.feature --no-capture --no-logcapture
+    ...
+    INFO:behave_logger:Scenario 'Verify the navigation bars on home page are visible' is starting...
+    ...
+    INFO:behave_logger:Scenario 'Verify the navigation bars on home page are visible' passed.
+    
+cd ..
+behave examples\setup_teardown_environment_py --no-capture --no-logcapture
+```
+
+### Background
+[Before scenario vs Background](.\BDD Before Scenario vs Background.xlsx)
+
+1. One background per feature file
+2. Background runs before every scenario in the feature file
+3. Background (Gherkin steps) runs after before_scenario
+4. Background usage such as Open Browser, Login, etc.
+
+#### DB Testing Recommended Structure:
+**Example1: Migration**
+1. **before_feature** → Create the database and tables before all scenarios.
+2. **before_scenario** → Insert test records before each scenario.
+3. **after_scenario** → Clean up the test records after each scenario.
+4. **after_feature** → Drop the database and clean up after all scenarios have executed.
+5. **Background** → Check test records exist before executing each scenario.
+
+**Example2: Test create a record**
+1. **before_feature** → Insert records before all scenarios.
+2. **after_feature** → Delete records after all scenarios have executed.
+3. **Background** → Check test records exist before executing each scenario.
+
+**Example:**
+```gherkin
+Background:
+    Given the users table is cleared
+    And the following users exist in the database
+      | id | name  | balance |
+      | 1  | Alice | 1000    |
+      | 2  | Bob   | 500     |
+```
