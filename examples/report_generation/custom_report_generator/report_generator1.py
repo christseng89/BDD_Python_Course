@@ -1,76 +1,273 @@
+"""
+- does not have the charts
+
+"""
 import json
 import argparse
-import os
-from jinja2 import Template
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--input_json_file', required=True, help="Path of input json file. JSON file is output of Behave test run")
-parser.add_argument('--output_html_file', required=True, help="Path of the output html file to be generated")
+parser.add_argument('--input_json_file',
+                    required=True,
+                    help="Path of input json file. JSON file is output of Behave test run")
+parser.add_argument('--output_html_file',
+                    required=True,
+                    help="Path of the output html file to be generated")
+
 args = parser.parse_args()
 
 input_file = args.input_json_file
 output_html_path = args.output_html_file
 
-feature_count, feature_failed_count, feature_passed_count = 0, 0, 0
-scenario_count, scenario_failed_count, scenario_passed_count = 0, 0, 0
+feature_count = 0
+feature_failed_count = 0
+feature_passed_count = 0
+scenario_count = 0
+scenario_failed_count = 0
+scenario_passed_count = 0
 
+all_rows = ""
+feature_row_template = '''<tr class="feature">
+                            <td class="feature_td">{fe_name}</td>
+                            <td class="status" style="background: {feature_status_background};">{fe_status}</td>
+                        </tr>'''
+
+scenario_row_template = '''<tr class="scenario" scenario_name="{sce_name}" onClick="{on_click}">    
+                                <td class="scenario_td">{sce_name}</td>
+                                <td class="status" style="color: {sc_status_color}; font-weight: {sc_status_font_weight}">{sce_status}</td>
+                            </tr>'''
+
+error_row_template = '''<tr class="error_row" scenario_name="{sce_name}" style="background: #ffaaaa; display: none;">
+                            <td class="err_sc_name scenario_td">{step_name}</td>
+                            <td>{err}</td>
+                        </tr>'''
+
+report_styles = """
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-left: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr.feature {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr.scenario {
+            background-color: #f1f1f1;
+        }
+        td.scenario_td {
+            padding-left: 20px; /* Added left margin */
+        }
+        td.status {
+            font-weight: bold;
+            text-align: center;
+        }
+        .passed {
+            color: #28a745;
+        }
+        .failed {
+            color: #dc3545;
+        }
+        tr.error_row {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .table-summary th {
+            background-color: #6c757d;
+        }
+    </style>
+"""
+
+
+report_javascript = """
+    <script>
+        function justalert(sc_name){
+            var locator = 'tr.error_row[scenario_name="' + sc_name + '"]'
+            var errRow = document.querySelector(locator)
+
+            if ( errRow.style.display == "block") {
+                errRow.style.display = "none";
+            } else {
+                errRow.style.display = "block";
+            }
+        }
+    </script>
+"""
+
+# read the report json file
 with open(input_file) as f:
     reports = json.load(f)
 
-def calculate_percent_passed():
-    total = scenario_failed_count + scenario_passed_count
-    return round((scenario_passed_count / total) * 100, 2) if total else 100
 
-rows = []
+def calcuate_percent_passed():
+    global scenario_failed_count
+    global scenario_passed_count
+    global scenario_count
+
+    total_scenarios = scenario_failed_count + scenario_passed_count
+    if total_scenarios != scenario_count:
+        raise Exception("Number of total scenario count and failed + passed does not match.")
+    try:
+        pct_pass = round((scenario_passed_count / total_scenarios) * 100, 2)
+    except ZeroDivisionError:
+        pct_pass = 100
+
+    return pct_pass
+
+
 for report in reports:
-    if report['keyword'] == 'Feature':
-        feature_count += 1
-        if report['status'] == 'passed':
-            feature_passed_count += 1
-        elif report['status'] == 'failed':
-            feature_failed_count += 1
+    # verify each dictionary in the list is a feature
+    _type = report['keyword']
+    if _type == 'Feature':
+        feature = report
+    else:
+        raise Exception("Unexpected top level keyword '{}'. Only expected 'Feature'".format(_type))
 
-        for scenario in report['elements']:
+    # update the count of features passed/failed
+    if feature['status'] == 'passed':
+        feature_passed_count += 1
+        feature_status_background = '#a5f1a5'
+    elif feature['status'] == 'failed':
+        feature_failed_count += 1
+        feature_status_background = '#ffaaaa'
+
+    else:
+        raise Exception(
+            "Unexpected status for feature. Expected 'passed' or 'failed' but found '{}'".format(feature['status']))
+
+    # add the feature as one row in the html table
+    all_rows = all_rows + feature_row_template.format(fe_name=feature['name'], fe_status=feature['status'],
+                                                      feature_status_background=feature_status_background)
+    feature_count += 1
+
+    scenarios = feature['elements']
+    for s in scenarios:
+        s_type = s['type']
+        if s_type == 'scenario':
+            scenario = s
+        else:
+            raise Exception(
+                "Unexpected 'type' in list of elements for feature. Expected 'scenario' but found '{}'".format(s_type))
+
+        scenario_name = scenario['name'].strip()
+        if scenario['status'] == 'passed':
+            scenario_passed_count += 1
             scenario_count += 1
-            if scenario['status'] == 'passed':
-                scenario_passed_count += 1
-            elif scenario['status'] == 'failed':
-                scenario_failed_count += 1
-            rows.append({
-                'feature': report['name'],
-                'scenario': scenario['name'],
-                'status': scenario['status']
-            })
+            on_click = 'na'
+            sc_status_color = '#1c881c'
+            sc_status_font_weight = 'none'
+        elif scenario['status'] == 'failed':
+            scenario_failed_count += 1
+            scenario_count += 1
+            on_click = "justalert('{}')".format(scenario_name)
+            sc_status_color = 'red'
+            sc_status_font_weight = 'bold'
 
-percent_passed = calculate_percent_passed()
+        else:
+            raise Exception(
+                "Unexpected 'status' for scenario. Expected 'passed' or 'failed'. Actual: {}. Scenario name: {}".format(
+                    scenario['status'], scenario_name))
 
-current_dir = os.path.dirname(os.path.realpath(__file__))
-template_path = os.path.join(current_dir, 'template.html')
+        # add the scenario row
+        all_rows = all_rows + scenario_row_template.format(on_click=on_click, sce_name=scenario_name,
+                                                           sce_status=scenario['status'].upper(),
+                                                           sc_status_color=sc_status_color,
+                                                           sc_status_font_weight=sc_status_font_weight)
 
-with open(template_path, 'r') as file:
-    html_template = Template(file.read())
+        # for the failed scenario the error needs to be added to the report so identify the step that failed and add the error
+        if scenario['status'] == 'failed':
+            steps = scenario['steps']
 
-html_content = html_template.render(
-    percent_passed=percent_passed,
-    feature_count=feature_count,
-    feature_passed_count=feature_passed_count,
-    feature_failed_count=feature_failed_count,
-    scenario_count=scenario_count,
-    scenario_passed_count=scenario_passed_count,
-    scenario_failed_count=scenario_failed_count,
-    rows=rows,
-    chart_width='600px',
-    chart_height='600px',
-    chart_style='margin: 20px auto; display: block; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);',
-    table_style='margin: 20px auto; border-collapse: collapse; width: 80%; text-align: left; font-family: Arial, sans-serif;',
-    th_style='background-color: #343a40; color: white; padding: 10px;',
-    td_style='padding: 8px; border: 1px solid #ddd;',
-    row_even_style='background-color: #f2f2f2;',
-    row_odd_style='background-color: #ffffff;'
-)
+            for step in steps:
+                try:
+                    if step['result']['status'] == 'failed':
+                        failed_step = step
+                        break
+                except:
+                    pass
+            else:
+                raise Exception(
+                    "There should be a failed step but none found in list of steps for scenario. Scenario name: {}".format(
+                        scenario_name))
 
+            # add the error detail row
+            # all_rows = all_rows + error_row_template.format(sce_name=scenario_name, step_name=failed_step['keyword'] + ":" + failed_step['name'], err='<br>'.join(failed_step['result']['error_message']))
+            all_rows = all_rows + error_row_template.format(sce_name=scenario_name,
+                                                            step_name=failed_step['keyword'] + ":" + failed_step[
+                                                                'name'], err=failed_step['result']['error_message'])
+
+# Build the report summary
+percent_passed = calcuate_percent_passed()
+
+report_html_template = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {report_styles}
+    <title>My Test Report</title>
+</head>
+<body>
+<div id="test_summary">
+         <h1> Scenario Pass Rate: {percent_passed}% ({scenario_passed_count}/{(scenario_failed_count + scenario_passed_count)})</h1>
+<table class="table-summary">
+    <thead><th></th><th>PASSED</th><th>FAILED</th><th>PASS RATE</th></thead>
+    <tbody>
+        <tr>
+            <th>Features</th><td style="color:green"><center>{feature_passed_count}</center></td>
+            <td style="color:red"><center>{feature_failed_count}</center></td>
+            <td><center>{round(feature_passed_count / (scenario_failed_count + feature_passed_count), 2) * 100} %</center></td>
+        </tr>
+        <tr>
+            <th>Scenario</th><td style="color:green"><center>{scenario_passed_count}</center></td>
+            <td style="color:red"><center>{scenario_failed_count}</center></td>
+            <td><center>{round(scenario_passed_count / (scenario_failed_count + scenario_passed_count), 2) * 100} %</center></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br>
+<table>
+    <thead></thead>
+    <tbody>
+    {all_rows}
+    </tbody>
+
+</table>
+{report_javascript}
+</body>
+</html>"""
+
+# reate the final report html
 with open(output_html_path, 'w') as f:
-    f.write(html_content)
+    f.write(report_html_template)
 
-print("HTML report generated at", output_html_path)
-
+print("***************************")
+print("Feature count: {}".format(feature_count))
+print("feature_failed_count: {}".format(feature_failed_count))
+print("feature_passed_count: {}".format(feature_passed_count))
+print("scenario_count: {}".format(scenario_count))
+print("scenario_failed_count: {}".format(scenario_failed_count))
+print("scenario_failed_count: {}".format(scenario_failed_count))
+print("Output html: {}".format(output_html_path))
+print("***************************")
