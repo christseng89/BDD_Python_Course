@@ -405,3 +405,11 @@ allure --version
 allure serve allure-results
     http://10.39.101.8:64297/index.html
 ```
+
+### Reports for Junit Compatible xml
+```cmd
+behave examples\report_generation --no-capture --no-logcapture --junit
+// reports folder will be created
+
+behave examples\report_generation --no-capture --no-logcapture --junit --junit-directory=reports_my_junit
+```

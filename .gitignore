@@ -32,3 +32,4 @@ woocommerce-sample-data/
 build/
 dist/
 *.egg-info/
+reports*/
