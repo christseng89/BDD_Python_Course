@@ -419,3 +419,21 @@ behave examples\report_generation --no-capture --no-logcapture --junit --junit-d
 behave examples\report_generation --no-capture --no-logcapture --format=json.pretty
 behave examples\report_generation --no-capture --no-logcapture --format=json.pretty --outfile=reports_my_json\my_report.json
 ```
+
+### Reports for Allure
+
+1. Install Allure
+    https://allurereport.org/docs/install/
+
+2. Install Allure Behave
+    https://pypi.org/project/allure-behave/
+
+3. Quick Start DEMO
+
+```cmd
+where allure
+pip install allure-behave
+
+behave examples\report_generation --no-capture --no-logcapture -f allure_behave.formatter:AllureFormatter -o reports_my_allure
+allure serve reports_my_allure
+```
