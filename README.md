@@ -282,3 +282,76 @@ behave examples\scenario_outline\scenario_outline_demo_2.feature --no-capture --
 behave examples\scenario_outline\examples_in_slides --no-capture --no-logcapture
 behave examples\scenario_outline --no-capture --no-logcapture --tags=tag1
 ```
+
+## Tags
+### Purpose of Tags
+1. Selective Test Execution 
+    behave --tags=@tag1
+2. Categorize Tests
+    @smoke for smoke tests,
+    @regression for regression tests,
+    @wip for work-in-progress tests.
+3. Skip Tests
+    behave --tags=~@integration (skip integration tests)
+    behave --tags=(@aa and @bb) and not @cc (run aa, bb, skip cc)
+4. Environment-Specific Tests
+    behave --tags=@dev (@qa, @regression, @batch, @sit, @uat, @staging, @prod, etc.)
+
+5. Apply Hooks to Specific Tests
+    @before_scenario, @after_scenario, @before_feature, @after_feature, @before_all, @after_all,
+    @before_tag, @after_tag, @before_step, @after_step
+
+https://behave.readthedocs.io/en/latest/tag_expressions/
+
+**Example:**
+```gherkin
+behave --show-skipped --tags=~@skip
+behave --no-skipped --tags=~@skip
+
+```
+
+**Tags Help**
+```cmd
+behave --tags-help
+    Scenarios inherit tags declared on the Feature level. The simplest
+    TAG_EXPRESSION is simply a tag::
+    
+        --tags @dev
+    
+    You may even leave off the "@" - behave doesn't mind.
+    
+    When a tag in a tag expression starts with a ~, this represents boolean NOT::
+    
+        --tags ~@dev
+    
+    A tag expression can have several tags separated by a comma, which represents
+    logical OR::
+    
+        --tags @dev,@wip
+    
+    The --tags option can be specified several times, and this represents logical
+    AND, for instance this represents the boolean expression
+    "(@foo or not @bar) and @zap"::
+    
+        --tags @foo,~@bar --tags @zap.
+    
+    Beware that if you want to use several negative tags to exclude several tags
+    you have to use logical AND::
+    
+        --tags ~@fixme --tags ~@buggy.
+```
+
+### Tags DEMO
+```cmd
+behave examples\using_tags --no-capture --no-logcapture
+behave examples\using_tags --no-capture --no-logcapture --tags @smoke
+behave examples\using_tags --no-capture --no-logcapture --tags @homepage
+
+behave examples\using_tags --no-capture --no-logcapture --tags ~@smoke
+behave examples\using_tags --no-capture --no-logcapture --tags=@homepage,@smoke
+behave examples\using_tags --no-capture --no-logcapture --tags=@homepage,@smoke --tags=~@logged_in
+behave examples\using_tags --no-capture --no-logcapture --tags=@homepage,@smoke --tags=~@regression
+
+behave examples\using_tags --no-capture --no-logcapture --tags=@homepage --tags=@logged_out
+
+```
