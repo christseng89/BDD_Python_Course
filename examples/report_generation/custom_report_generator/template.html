@@ -1,0 +1,47 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<!--    <title>Test Report</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container mt-4">-->
+<!--    <h1 class="text-center mb-4">Scenario Pass Rate: {{ percent_passed }}% ({{ scenario_passed_count }}/{{ scenario_count }})</h1>-->
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <canvas id="passChart"></canvas>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <table class="table table-bordered mt-4">-->
+<!--        <thead class="thead-dark">-->
+<!--            <tr><th>Feature</th><th>Scenario</th><th>Status</th></tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--            {% for row in rows %}-->
+<!--            <tr class="{{ 'table-success' if row.status == 'passed' else 'table-danger' }}">-->
+<!--                <td>{{ row.feature }}</td>-->
+<!--                <td>{{ row.scenario }}</td>-->
+<!--                <td>{{ row.status.upper() }}</td>-->
+<!--            </tr>-->
+<!--            {% endfor %}-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--<script>-->
+<!--    var ctx = document.getElementById('passChart').getContext('2d');-->
+<!--    var passChart = new Chart(ctx, {-->
+<!--        type: 'pie',-->
+<!--        data: {-->
+<!--            labels: ['Passed', 'Failed'],-->
+<!--            datasets: [{-->
+<!--                data: [parseInt('{{ scenario_passed_count }}'), parseInt('{{ scenario_failed_count }}')],-->
+<!--                backgroundColor: ['#28a745', '#dc3545']-->
+<!--            }]-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

@@ -172,7 +172,8 @@ for report in reports:
                 raise Exception("There should be a failed step but none found in list of steps for scenario. Scenario name: {}".format(scenario_name))
 
             # add the error detail row
-            all_rows = all_rows + error_row_template.format(sce_name=scenario_name, step_name=failed_step['keyword'] + ":" + failed_step['name'], err='<br>'.join(failed_step['result']['error_message']))
+            # all_rows = all_rows + error_row_template.format(sce_name=scenario_name, step_name=failed_step['keyword'] + ":" + failed_step['name'], err='<br>'.join(failed_step['result']['error_message']))
+            all_rows = all_rows + error_row_template.format(sce_name=scenario_name, step_name=failed_step['keyword'] + ":" + failed_step['name'], err=failed_step['result']['error_message'])
 
 
 

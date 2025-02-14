@@ -437,3 +437,22 @@ pip install allure-behave
 behave examples\report_generation --no-capture --no-logcapture -f allure_behave.formatter:AllureFormatter -o reports_my_allure
 allure serve reports_my_allure
 ```
+
+### Custom Reports
+```cmd
+behave examples\report_generation --no-capture --no-logcapture -f json.pretty -o reports_my_json\my_custom_reports.json
+python examples\report_generation\custom_report_generator\report_generator.py
+    usage: report_generator.py [-h] --input_json_file INPUT_JSON_FILE --output_html_file OUTPUT_HTML_FILE
+    report_generator.py: error: the following arguments are required: --input_json_file, --output_html_file
+    
+python examples\report_generation\custom_report_generator\report_generator.py --input_json_file=reports_my_json\my_custom_reports.json --output_html_file=reports_my_json\my_custom_reports.html
+```
+
+// AI Revised
+```cmd
+pip install jinja2
+
+python examples\report_generation\custom_report_generator\report_generator1.py --input_json_file=reports_my_json\my_custom_reports.json --output_html_file=reports_my_json\my_custom_reports1.html
+
+```
+
