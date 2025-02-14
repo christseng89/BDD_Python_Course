@@ -413,3 +413,9 @@ behave examples\report_generation --no-capture --no-logcapture --junit
 
 behave examples\report_generation --no-capture --no-logcapture --junit --junit-directory=reports_my_junit
 ```
+
+### Reports for Json Pretty
+```cmd
+behave examples\report_generation --no-capture --no-logcapture --format=json.pretty
+behave examples\report_generation --no-capture --no-logcapture --format=json.pretty --outfile=reports_my_json\my_report.json
+```
