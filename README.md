@@ -355,3 +355,53 @@ behave examples\using_tags --no-capture --no-logcapture --tags=@homepage,@smoke 
 behave examples\using_tags --no-capture --no-logcapture --tags=@homepage --tags=@logged_out
 
 ```
+
+## Generate Reports
+```cmd
+behave examples\report_generation\my_feature_1.feature --no-capture --no-logcapture
+    Assertion Failed: Step failed due to exception: ❌ Failing on purpose
+
+behave examples\report_generation\my_feature_2.feature --no-capture --no-logcapture
+behave examples\report_generation\my_feature_3.feature --no-capture --no-logcapture
+    Assertion Failed: Step failed due to exception: ❌ Failing on purpose
+
+behave examples\report_generation --no-capture --no-logcapture
+```
+
+https://behave.readthedocs.io/en/stable/behave.html
+https://behave.readthedocs.io/en/stable/behave.html#cmdoption-junit
+https://behave.readthedocs.io/en/stable/behave.html#cmdoption-f
+
+**Format Options**
+```cmd
+behave --help
+
+behave --format help
+    Available formatters:
+      json           JSON dump of test run
+      json.pretty    JSON dump of test run (human readable)
+      null           Provides formatter that does not output anything.
+      plain          Very basic formatter with maximum compatibility
+      pretty         Standard colourised pretty formatter
+      progress       Shows dotted progress for each executed scenario.
+      progress2      Shows dotted progress for each executed step.
+      progress3      Shows detailed progress for each step of a scenario.
+      rerun          Emits scenario file locations of failing scenarios
+      sphinx.steps   Generate sphinx-based documentation for step definitions.
+      steps          Shows step definitions (step implementations).
+      steps.catalog  Shows non-technical documentation for step definitions.
+      steps.doc      Shows documentation for step definitions.
+      steps.usage    Shows how step definitions are used by steps.
+      tags           Shows tags (and how often they are used).
+      tags.location  Shows tags and the location where they are used.
+```
+#### Allure Report
+https://allurereport.org/docs/install-for-windows/#install-from-an-archive
+
+```cmd
+allure --version
+    2.32.0
+
+allure serve allure-results
+    http://10.39.101.8:64297/index.html
+```
