@@ -1,4 +1,18 @@
 import json
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--input_json_file',
+                    required=True,
+                    help="Path of input json file. JSON file is output of Behave test run")
+parser.add_argument('--output_html_file',
+                    required=True,
+                    help="Path of the output html file to be generated")
+
+args = parser.parse_args()
+
+input_file = args.input_json_file
+output_html_path = args.output_html_file
 
 with open('my_custom_reports.json') as file:
     data = json.load(file)
@@ -22,6 +36,18 @@ html_content = f"""
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' href='report_style.css'>
     <title>BDD Report</title>
+    <script>
+        function toggleSteps(scenarioId) {{
+            var steps = document.querySelectorAll('.step-' + scenarioId);
+            steps.forEach(step => {{
+                if (step.style.display === 'none') {{
+                    step.style.display = 'table-row';
+                }} else {{
+                    step.style.display = 'none';
+                }}
+            }});
+        }}
+    </script>
 </head>
 <body>
     <h1 class='header'>Scenario Pass Rate: {scenario_pass_rate:.2f}% ({scenario_results['passed']}/{sum(scenario_results.values())})</h1>
@@ -34,17 +60,19 @@ html_content = f"""
     <table class='feature-summary'>
         <tr><th class='type-column'>Type</th><th class='description-column'>Description</th></tr>
 """
+scenario_id = 0
 
 for feature in data:
     feature_class = 'passed' if feature['status'] == 'passed' else 'failed'
     html_content += f"<tr class='feature {feature_class}'><td class='type'>Feature</td><td class='feature-indent'>{feature['name']}</td></tr>"
     for scenario in feature['elements']:
         scenario_class = 'passed' if scenario['status'] == 'passed' else 'failed'
-        html_content += f"<tr class='scenario {scenario_class}'><td class='type'>Scenario</td><td class='scenario-indent'>{scenario['name']}</td></tr>"
+        scenario_id += 1
+        html_content += f"<tr class='scenario {scenario_class}' onclick='toggleSteps({scenario_id})'><td class='type'>Scenario</td><td class='scenario-indent'>{scenario['name']}</td></tr>"
         for step in scenario['steps']:
             if 'result' in step and step['result']['status'] == 'failed':
                 error_msg = step.get('result', {}).get('error_message', '')
-                html_content += f"<tr class='step failed'><td class='type'>Step</td><td class='step-indent'>{step['keyword']} {step['name']} {'- ' + error_msg if error_msg else ''}</td></tr>"
+                html_content += f"<tr class='step step-{scenario_id} failed' style='display: none;'><td class='type'>Step</td><td class='step-indent'>{step['keyword']} {step['name']} {'- ' + error_msg if error_msg else ''}</td></tr>"
 
 html_content += "</table></body></html>"
 
@@ -89,6 +117,7 @@ with open('report_style.css', 'w') as css:
     }
     .scenario {
       font-weight: bold;
+      cursor: pointer;
     }
     .step {
       font-size: 16px;

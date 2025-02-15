@@ -6,6 +6,18 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' href='report_style.css'>
     <title>BDD Report</title>
+    <script>
+        function toggleSteps(scenarioId) {
+            var steps = document.querySelectorAll('.step-' + scenarioId);
+            steps.forEach(step => {
+                if (step.style.display === 'none') {
+                    step.style.display = 'table-row';
+                } else {
+                    step.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <h1 class='header'>Scenario Pass Rate: 71.43% (5/7)</h1>
@@ -17,4 +29,4 @@
 
     <table class='feature-summary'>
         <tr><th class='type-column'>Type</th><th class='description-column'>Description</th></tr>
-<tr class='feature failed'><td class='type'>Feature</td><td class='feature-indent'>My Feature 1</td></tr><tr class='scenario passed'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 1 of Feature 1</td></tr><tr class='scenario failed'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 2 of Feature 1</td></tr><tr class='step failed'><td class='type'>Step</td><td class='step-indent'>Then I am a failing step - Assertion Failed: Step failed due to exception: ❌ Failing on purpose</td></tr><tr class='scenario passed'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 3 of Feature 1</td></tr><tr class='scenario passed'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 4 of Feature 1</td></tr><tr class='feature passed'><td class='type'>Feature</td><td class='feature-indent'>My Feature 2</td></tr><tr class='scenario passed'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 1 of Feature 2</td></tr><tr class='scenario passed'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 2 of Feature 2</td></tr><tr class='feature failed'><td class='type'>Feature</td><td class='feature-indent'>My Feature 3</td></tr><tr class='scenario failed'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 1 of Feature 3</td></tr><tr class='step failed'><td class='type'>Step</td><td class='step-indent'>Then I am a failing step - Assertion Failed: Step failed due to exception: ❌ Failing on purpose</td></tr></table></body></html>
+<tr class='feature failed'><td class='type'>Feature</td><td class='feature-indent'>My Feature 1</td></tr><tr class='scenario passed' onclick='toggleSteps(1)'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 1 of Feature 1</td></tr><tr class='scenario failed' onclick='toggleSteps(2)'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 2 of Feature 1</td></tr><tr class='step step-2 failed' style='display: none;'><td class='type'>Step</td><td class='step-indent'>Then I am a failing step - Assertion Failed: Step failed due to exception: ❌ Failing on purpose</td></tr><tr class='scenario passed' onclick='toggleSteps(3)'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 3 of Feature 1</td></tr><tr class='scenario passed' onclick='toggleSteps(4)'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 4 of Feature 1</td></tr><tr class='feature passed'><td class='type'>Feature</td><td class='feature-indent'>My Feature 2</td></tr><tr class='scenario passed' onclick='toggleSteps(5)'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 1 of Feature 2</td></tr><tr class='scenario passed' onclick='toggleSteps(6)'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 2 of Feature 2</td></tr><tr class='feature failed'><td class='type'>Feature</td><td class='feature-indent'>My Feature 3</td></tr><tr class='scenario failed' onclick='toggleSteps(7)'><td class='type'>Scenario</td><td class='scenario-indent'>Scenario 1 of Feature 3</td></tr><tr class='step step-7 failed' style='display: none;'><td class='type'>Step</td><td class='step-indent'>Then I am a failing step - Assertion Failed: Step failed due to exception: ❌ Failing on purpose</td></tr></table></body></html>
