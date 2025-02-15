@@ -1,0 +1,307 @@
+[
+{
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "examples/report_generation/my_feature_1.feature:8",
+      "name": "Scenario 1 of Feature 1",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "examples/report_generation/my_feature_1.feature:10",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.0004992485046386719,
+            "status": "passed"
+          },
+          "step_type": "given"
+        }
+      ],
+      "tags": [
+        "f1s1"
+      ],
+      "type": "scenario"
+    },
+    {
+      "keyword": "Scenario",
+      "location": "examples/report_generation/my_feature_1.feature:14",
+      "name": "Scenario 2 of Feature 1",
+      "status": "failed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "examples/report_generation/my_feature_1.feature:16",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.00029659271240234375,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "examples/report_generation/my_feature_1.feature:17",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:14"
+          },
+          "name": "I am a failing step",
+          "result": {
+            "duration": 0.0005559921264648438,
+            "error_message": "Assertion Failed: Step failed due to exception: \u274c Failing on purpose",
+            "status": "failed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "Then",
+          "location": "examples/report_generation/my_feature_1.feature:18",
+          "name": "I am a passing step",
+          "step_type": "then"
+        },
+        {
+          "keyword": "Then",
+          "location": "examples/report_generation/my_feature_1.feature:19",
+          "name": "I am a passing step",
+          "step_type": "then"
+        }
+      ],
+      "tags": [
+        "f1s2"
+      ],
+      "type": "scenario"
+    },
+    {
+      "keyword": "Scenario",
+      "location": "examples/report_generation/my_feature_1.feature:22",
+      "name": "Scenario 3 of Feature 1",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "examples/report_generation/my_feature_1.feature:24",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.00028014183044433594,
+            "status": "passed"
+          },
+          "step_type": "given"
+        }
+      ],
+      "tags": [
+        "f1s1"
+      ],
+      "type": "scenario"
+    },
+    {
+      "keyword": "Scenario",
+      "location": "examples/report_generation/my_feature_1.feature:27",
+      "name": "Scenario 4 of Feature 1",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "examples/report_generation/my_feature_1.feature:29",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.00020623207092285156,
+            "status": "passed"
+          },
+          "step_type": "given"
+        }
+      ],
+      "tags": [
+        "f1s1"
+      ],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "examples/report_generation/my_feature_1.feature:5",
+  "name": "My Feature 1",
+  "status": "failed",
+  "tags": [
+    "f1"
+  ]
+},
+
+{
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "examples/report_generation/my_feature_2.feature:6",
+      "name": "Scenario 1 of Feature 2",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "examples/report_generation/my_feature_2.feature:8",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.002264738082885742,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "examples/report_generation/my_feature_2.feature:9",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.0003428459167480469,
+            "status": "passed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    },
+    {
+      "keyword": "Scenario",
+      "location": "examples/report_generation/my_feature_2.feature:11",
+      "name": "Scenario 2 of Feature 2",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "examples/report_generation/my_feature_2.feature:13",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.0010142326354980469,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "examples/report_generation/my_feature_2.feature:14",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.0003669261932373047,
+            "status": "passed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "Then",
+          "location": "examples/report_generation/my_feature_2.feature:15",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.0003483295440673828,
+            "status": "passed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "examples/report_generation/my_feature_2.feature:3",
+  "name": "My Feature 2",
+  "status": "passed",
+  "tags": []
+},
+
+{
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "examples/report_generation/my_feature_3.feature:6",
+      "name": "Scenario 1 of Feature 3",
+      "status": "failed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "examples/report_generation/my_feature_3.feature:8",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.0002262592315673828,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "Then",
+          "location": "examples/report_generation/my_feature_3.feature:9",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:6"
+          },
+          "name": "I am a passing step",
+          "result": {
+            "duration": 0.0004799365997314453,
+            "status": "passed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "Then",
+          "location": "examples/report_generation/my_feature_3.feature:10",
+          "match": {
+            "arguments": [],
+            "location": "examples/report_generation/steps/steps.py:14"
+          },
+          "name": "I am a failing step",
+          "result": {
+            "duration": 0.0005056858062744141,
+            "error_message": "Assertion Failed: Step failed due to exception: \u274c Failing on purpose",
+            "status": "failed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "examples/report_generation/my_feature_3.feature:3",
+  "name": "My Feature 3",
+  "status": "failed",
+  "tags": []
+}
+]
