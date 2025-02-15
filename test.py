@@ -32,19 +32,19 @@ html_content = f"""
     </table>
 
     <table class='feature-summary'>
-        <tr><th>Type</th><th>Description</th><th>Status</th></tr>
+        <tr><th class='type-column'>Type</th><th class='description-column'>Description</th></tr>
 """
 
 for feature in data:
     feature_class = 'passed' if feature['status'] == 'passed' else 'failed'
-    html_content += f"<tr class='feature {feature_class}'><td>Feature</td><td class='feature-indent'>{feature['name']}</td><td class='{feature_class}'>{feature['status'].upper()}</td></tr>"
+    html_content += f"<tr class='feature {feature_class}'><td class='type'>Feature</td><td class='feature-indent'>{feature['name']}</td></tr>"
     for scenario in feature['elements']:
         scenario_class = 'passed' if scenario['status'] == 'passed' else 'failed'
-        html_content += f"<tr class='scenario {scenario_class}'><td>Scenario</td><td class='scenario-indent'>{scenario['name']}</td><td class='{scenario_class}'>{scenario['status'].upper()}</td></tr>"
+        html_content += f"<tr class='scenario {scenario_class}'><td class='type'>Scenario</td><td class='scenario-indent'>{scenario['name']}</td></tr>"
         for step in scenario['steps']:
             if 'result' in step and step['result']['status'] == 'failed':
                 error_msg = step.get('result', {}).get('error_message', '')
-                html_content += f"<tr class='step failed'><td>Step</td><td class='step-indent'>{step['keyword']} {step['name']} {'- ' + error_msg if error_msg else ''}</td><td class='failed'>FAILED</td></tr>"
+                html_content += f"<tr class='step failed'><td class='type'>Step</td><td class='step-indent'>{step['keyword']} {step['name']} {'- ' + error_msg if error_msg else ''}</td></tr>"
 
 html_content += "</table></body></html>"
 
@@ -76,6 +76,12 @@ with open('report_style.css', 'w') as css:
       color: white;
       font-size: 18px;
     }
+    .type-column {
+      width: 15%;
+    }
+    .description-column {
+      width: 85%;
+    }
     .feature {
       font-weight: bold;
       font-size: 20px;
@@ -88,14 +94,18 @@ with open('report_style.css', 'w') as css:
       font-size: 16px;
       background-color: #fce4ec;
     }
+    .type {
+      font-weight: bold;
+      width: 15%;
+    }
     .feature-indent {
-      margin-left: 4px;
+      padding-left: 20px;
     }
     .scenario-indent {
-      margin-left: 8px;
+      padding-left: 40px;
     }
     .step-indent {
-      margin-left: 12px;
+      padding-left: 60px;
     }
     .passed {
       color: blue;

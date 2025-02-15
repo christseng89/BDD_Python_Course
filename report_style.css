@@ -11,6 +11,7 @@
       width: 90%;
       margin: 20px auto;
       border-collapse: collapse;
+      border: 1px solid #999;
     }
     th, td {
       border: 1px solid #999;
@@ -21,6 +22,12 @@
       background-color: #4f4f4f;
       color: white;
       font-size: 18px;
+    }
+    .type-column {
+      width: 15%;
+    }
+    .description-column {
+      width: 85%;
     }
     .feature {
       font-weight: bold;
@@ -34,14 +41,18 @@
       font-size: 16px;
       background-color: #fce4ec;
     }
+    .type {
+      font-weight: bold;
+      width: 15%;
+    }
     .feature-indent {
-      margin-left: 4px;
+      padding-left: 20px;
     }
     .scenario-indent {
-      margin-left: 8px;
+      padding-left: 40px;
     }
     .step-indent {
-      margin-left: 12px;
+      padding-left: 60px;
     }
     .passed {
       color: blue;
