@@ -4,6 +4,8 @@
 """
 import json
 import argparse
+import webbrowser
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--input_json_file',
@@ -235,3 +237,6 @@ print("scenario_failed_count: {}".format(scenario_failed_count))
 print("scenario_failed_count: {}".format(scenario_failed_count))
 print("Output html: {}".format(output_html_path))
 print("***************************")
+
+# Open the generated HTML file in the default web browser
+webbrowser.open('file://' + os.path.abspath(output_html_path))

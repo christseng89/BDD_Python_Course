@@ -1,5 +1,7 @@
 import json
 import argparse
+import webbrowser
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--input_json_file',
@@ -57,6 +59,7 @@ report_styles = """
       .step {
         font-size: 16px;
         background-color: #fce4ec;
+        display: none;
       }
       .type {
         font-weight: bold;
@@ -103,11 +106,8 @@ html_content = f"""
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    # <link rel='stylesheet' href='report_style.css'>
-     
     {report_styles}
-
-    <title>BDD Report</title>
+    <title>BDD Custom Report1</title>
     <script>
         function toggleSteps(scenarioId) {{
             var steps = document.querySelectorAll('.step-' + scenarioId);
@@ -151,4 +151,17 @@ html_content += "</table></body></html>"
 with open(output_html_path, 'w') as file:
     file.write(html_content)
 
+print("***************************")
+print("Feature count: {}".format(feature_results['failed'] + feature_results['passed']))
+print("feature_failed_count: {}".format(feature_results['failed']))
+print("feature_passed_count: {}".format(feature_results['passed']) + "\n")
+
+print("scenario_count: {}".format(scenario_results['failed'] + scenario_results['passed']))
+print("scenario_failed_count: {}".format(scenario_results['failed']))
+print("scenario_passed_count: {}".format(scenario_results['passed']))
+print("Output html: {}".format(output_html_path))
 print("HTML report generated successfully.")
+print("***************************")
+
+# Open the generated HTML file in the default web browser
+webbrowser.open('file://' + os.path.abspath(output_html_path))
