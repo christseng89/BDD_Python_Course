@@ -32,19 +32,19 @@ html_content = f"""
     </table>
 
     <table class='feature-summary'>
-        <tr><th>Feature</th><th>Scenario</th><th>Status</th></tr>
+        <tr><th>Type</th><th>Description</th><th>Status</th></tr>
 """
 
 for feature in data:
     feature_class = 'passed' if feature['status'] == 'passed' else 'failed'
-    html_content += f"<tr class='feature {feature_class}'><td colspan='3'>{feature['name']}</td></tr>"
+    html_content += f"<tr class='feature {feature_class}'><td>Feature</td><td class='feature-indent'>{feature['name']}</td><td class='{feature_class}'>{feature['status'].upper()}</td></tr>"
     for scenario in feature['elements']:
         scenario_class = 'passed' if scenario['status'] == 'passed' else 'failed'
-        html_content += f"<tr class='scenario {scenario_class}'><td></td><td>{scenario['name']}</td><td class='{scenario_class}'>{scenario['status'].upper()}</td></tr>"
+        html_content += f"<tr class='scenario {scenario_class}'><td>Scenario</td><td class='scenario-indent'>{scenario['name']}</td><td class='{scenario_class}'>{scenario['status'].upper()}</td></tr>"
         for step in scenario['steps']:
             if 'result' in step and step['result']['status'] == 'failed':
                 error_msg = step.get('result', {}).get('error_message', '')
-                html_content += f"<tr class='step failed'><td></td><td colspan='2'>{step['keyword']} {step['name']} {'- ' + error_msg if error_msg else ''}</td></tr>"
+                html_content += f"<tr class='step failed'><td>Step</td><td class='step-indent'>{step['keyword']} {step['name']} {'- ' + error_msg if error_msg else ''}</td><td class='failed'>FAILED</td></tr>"
 
 html_content += "</table></body></html>"
 
@@ -69,7 +69,7 @@ with open('report_style.css', 'w') as css:
     th, td {
       border: 1px solid #999;
       padding: 12px;
-      text-align: center;
+      text-align: left;
     }
     th {
       background-color: #4f4f4f;
@@ -79,23 +79,30 @@ with open('report_style.css', 'w') as css:
     .feature {
       font-weight: bold;
       font-size: 20px;
-      background-color: #ddd;
-      text-align: left;
+      background-color: #f8d7da;
     }
     .scenario {
-      text-align: left;
+      font-weight: bold;
+    }
+    .step {
+      font-size: 16px;
+      background-color: #fce4ec;
+    }
+    .feature-indent {
+      margin-left: 4px;
+    }
+    .scenario-indent {
+      margin-left: 8px;
+    }
+    .step-indent {
+      margin-left: 12px;
     }
     .passed {
       color: blue;
-      font-weight: bold;
     }
     .failed {
       color: red;
-      font-weight: bold;
       background-color: #f8d7da;
-    }
-    .step {
-      text-align: left;
     }
     """)
 

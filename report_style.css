@@ -15,7 +15,7 @@
     th, td {
       border: 1px solid #999;
       padding: 12px;
-      text-align: center;
+      text-align: left;
     }
     th {
       background-color: #4f4f4f;
@@ -25,22 +25,29 @@
     .feature {
       font-weight: bold;
       font-size: 20px;
-      background-color: #ddd;
-      text-align: left;
+      background-color: #f8d7da;
     }
     .scenario {
-      text-align: left;
+      font-weight: bold;
+    }
+    .step {
+      font-size: 16px;
+      background-color: #fce4ec;
+    }
+    .feature-indent {
+      margin-left: 4px;
+    }
+    .scenario-indent {
+      margin-left: 8px;
+    }
+    .step-indent {
+      margin-left: 12px;
     }
     .passed {
       color: blue;
-      font-weight: bold;
     }
     .failed {
       color: red;
-      font-weight: bold;
       background-color: #f8d7da;
-    }
-    .step {
-      text-align: left;
     }
     
