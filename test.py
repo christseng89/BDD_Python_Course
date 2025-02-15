@@ -1,18 +1,4 @@
 import json
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument('--input_json_file',
-                    required=True,
-                    help="Path of input json file. JSON file is output of Behave test run")
-parser.add_argument('--output_html_file',
-                    required=True,
-                    help="Path of the output html file to be generated")
-
-args = parser.parse_args()
-
-input_file = args.input_json_file
-output_html_path = args.output_html_file
 
 with open('my_custom_reports.json') as file:
     data = json.load(file)
