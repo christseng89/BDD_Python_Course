@@ -453,3 +453,26 @@ python examples\report_generation\custom_report_generator\report_generator.py --
 python examples\report_generation\custom_report_generator\report_generator1.py --input_json_file=reports_my_json\my_custom_reports.json --output_html_file=reports_my_json\my_custom_reports1.html
 ```
 
+## Other features
+
+### Calling Steps in step
+```code snippet
+context.execute_steps("""
+    ...
+""")
+```
+
+```code snippet
+@given("I fill in the registration form and submit")
+def fill_in_registration_form_and_submit(context):
+
+    context.execute_steps("""
+        Given I go to registration page
+        When I fill in the form
+        And I click on submit
+    """)
+```
+
+```cmd
+behave examples\running_steps_in_other_steps\registration_smoke.feature --no-capture --no-logcapture
+```

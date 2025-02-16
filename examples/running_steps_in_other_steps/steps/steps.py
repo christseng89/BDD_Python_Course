@@ -20,11 +20,11 @@ def i_should_get_success_message(context):
 @given("I fill in the registration form and submit")
 def fill_in_registration_form_and_submit(context):
 
-    context.execute_steps(u"""
-                Given I go to registration page
-                When I fill in the form
-                And I click on submit
-                """)
+    context.execute_steps("""
+        Given I go to registration page
+        When I fill in the form
+        And I click on submit
+    """)
 
 @then("the error message 'User Exists Already' should be displayed")
 def verify_error_message(context):
