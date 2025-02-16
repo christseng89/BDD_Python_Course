@@ -476,3 +476,30 @@ def fill_in_registration_form_and_submit(context):
 ```cmd
 behave examples\running_steps_in_other_steps\registration_smoke.feature --no-capture --no-logcapture
 ```
+
+### Pass Data from Command Line
+```code snippet
+@given("I create a new user")
+def create_new_user(context):
+    """
+    Step to create a new user.
+    :return:
+    """
+    print("I am creating a new user")
+    print(":) :) :) :) :) :)")
+    print("More code would go here")
+    # user.user_creator()
+    prefix = context.config.userdata.get('prefix') ### Get the prefix from the command line
+
+```
+```cmd
+behave examples\basic_example\feature_example_1_scenario.feature --no-capture --no-logcapture -D prefix=ct -D username=John -D password=123
+REM exit to exit the debugger
+REM contunue to continue the execution
+REM (Pdb) dir(context.config)
+REM (Pdb) context.config.userdata ### 
+REM {'prefix': 'ct', 'username': 'John', 'password': '123'}
+REM (Pdb) context.config.userdata['prefix']
+REM 'ct'
+
+```

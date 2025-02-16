@@ -14,8 +14,8 @@ def create_new_user(context):
     print(":) :) :) :) :) :)")
     print("More code would go here")
     # user.user_creator()
-    prefix = context.config.userdata.get('prefix')
-
+    prefix = context.config.userdata.get('prefix') # Get the prefix from the command line
+    print(f"Context Config User Data: {context.config.userdata}")
     pdb.set_trace()
 
 @when("I type email")
