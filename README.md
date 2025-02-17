@@ -530,3 +530,14 @@ REM context.text
 REM context.text.strip()
 REM continue
 ```
+
+### How to Exclude Features Test by Regular Expression PATTERN
+```cmd
+behave examples\other -e ".*1\.feature"
+behave examples\other -e ".*3\.feature" -t ~f1s1
+behave examples\other -e ".*3\.feature" -t ~f1s1 --no-capture
+
+behave examples\other -e ".*smoke.*\.feature"
+behave examples\other -e ".*smoke.*\.feature" -t ~f1s1
+behave examples\other -e ".*smoke.*\.feature" -t ~f1s1 --no-capture
+```
