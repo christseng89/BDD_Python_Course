@@ -4,25 +4,30 @@ import argparse
 from datetime import datetime
 import os
 import pathlib
-import platform
+# import platform
+# import pdb
 
-def add_drivers_to_path():
 
-    print("Adding webdrivers to path.")
-    curr_file_path = pathlib.Path(__file__).parent.absolute()
-
-    if platform.system() == 'Darwin':
-        webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'mac')
-    elif platform.system() == 'Windows':
-        webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'wimdows')
-    elif platform.system() == 'Linux':
-        webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'linux')
-    else:
-        raise Exception("Unknown platform. Unable to add webdrivers to path.")
-
-    current_path = os.environ.get['PATH']
-    new_path = webdriver_path + ':' + current_path
-    os.environ['PATH'] = new_path
+# def add_drivers_to_path():
+#
+#     print("Adding webdrivers to path.")
+#     curr_file_path = pathlib.Path(__file__).parent.absolute()
+#
+#     if platform.system() == 'Darwin':
+#         webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'mac')
+#     elif platform.system() == 'Windows':
+#         webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'wimdows')
+#     elif platform.system() == 'Linux':
+#         webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'linux')
+#     else:
+#         raise Exception("Unknown platform. Unable to add webdrivers to path.")
+#
+#     current_path = os.environ.get['PATH']
+#     print(f"Webdriver path: {webdriver_path}")
+#     new_path = webdriver_path + ':' + current_path
+#     pdb.set_trace()
+#     print(f"New path: {new_path}")
+#     os.environ['PATH'] = new_path
 
 def get_unique_run_id():
 
@@ -31,7 +36,7 @@ def get_unique_run_id():
     elif os.environ.get("CUSTOM_BUILD_NUMBER"):
         unique_run_id = os.environ.get("CUSTOM_BUILD_NUMBER")
     else:
-        unique_run_id = datetime.now().strftime('%Y%m%d%H%M%s')
+        unique_run_id = datetime.now().strftime('%Y%m%d%H%M%S')
 
     os.environ['UNIQUE_RUN_ID'] = unique_run_id
 
@@ -72,8 +77,11 @@ if __name__ == '__main__':
               f'{behave_options} ' \
               f'{test_dir} '
 
-    print(f"Running command: {command}")
+    try:
+        rs = subprocess.run(command, shell=True)
+        print(f"✅ Running command:\n{command}")
+    except Exception as e:
+        print(f"❌ Error running command:\n{command}")
+        print(e)
 
-    rs = subprocess.run(command, shell=True)
-
-
+    print(f"Return code: {rs.returncode}")

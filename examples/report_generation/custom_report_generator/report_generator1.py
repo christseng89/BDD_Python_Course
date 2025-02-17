@@ -144,7 +144,15 @@ for feature in data:
         for step in scenario['steps']:
             if 'result' in step and step['result']['status'] == 'failed':
                 error_msg = step.get('result', {}).get('error_message', '')
-                html_content += f"<tr class='step step-{scenario_id} failed' style='display: none;'><td class='type'>Step</td><td class='step-indent'>{step['keyword']} {step['name']} {'- ' + error_msg if error_msg else ''}</td></tr>"
+                if isinstance(error_msg, list):
+                    error_msg = "<br>".join(error_msg)  # Convert list to string with line breaks
+                else:
+                    error_msg = error_msg.replace("\n", "<br>")  # Replace newlines with <br> tags
+
+                html_content += f"<tr class='step step-{scenario_id} failed' style='display: none;'>"
+                html_content += f"<td class='type'>Step</td>"
+                html_content += f"<td class='step-indent'>{step['keyword']} {step['name']} - {error_msg}</td>"
+                html_content += "</tr>"
 
 html_content += "</table></body></html>"
 

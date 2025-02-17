@@ -450,7 +450,7 @@ python examples\report_generation\custom_report_generator\report_generator.py --
 
 // AI Revised
 ```cmd
-python examples\report_generation\custom_report_generator\report_generator1.py --input_json_file=reports_my_json\my_custom_reports.json --output_html_file=reports_my_json\my_custom_reports1.html
+python examples\report_generation\custom_report_generator\report_generator1.py --input_json_file=reports_my_json\my_custom_reports.json --output_html_file=reports_my_json\my_custom_reports2.html
 ```
 
 ## Other features
@@ -578,4 +578,17 @@ behave examples\other --no-capture --no-logcapture
     6 scenarios passed, 2 failed, 0 skipped
     14 steps passed, 2 failed, 2 skipped, 0 undefined
 
+```
+
+## Runner Script
+
+### Runner Python Script to Run Tests
+```cmd
+python examples\other\runner.py --test_dir=examples\other
+    ✅ Running command:
+    behave -k --no-capture -f json.pretty -o "C:\Users\samfi\PycharmProjects\BDD_Python_Course\examples\other\results_20250217193130\json_report_out.json" --junit --junit-directory "C:\Users\samfi\PycharmProjects\BDD_Python_Course\examples\other\results_20250217193130\junit_report_out"  examples\other
+    Return code: 1
+
+REM Custom Reports
+python examples\report_generation\custom_report_generator\report_generator1.py --input_json_file=examples\other\results_20250217175517\json_report_out.json --output_html_file=reports_my_json\my_custom_reports2.html
 ```

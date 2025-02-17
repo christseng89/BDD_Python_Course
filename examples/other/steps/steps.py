@@ -12,8 +12,8 @@ def i_am_a_passing_steps(context):
     print("1ST PASS 3")
     # step_text = context.text
     print(f"Context text:\n{context.text}")
-    if context.text != None:
-        pdb.set_trace()
+    # if context.text != None:
+    #     pdb.set_trace()
 
 
 @step("I another a passing step")
@@ -26,8 +26,8 @@ def i_another_a_passing_step(context):
     print(f"Context text:\n{context.text}")
     print(f"✅ Context text Json: {my_json}")
     print(f"✅ First name: {my_json['first_name']}")
-    if context.text != None:
-        pdb.set_trace()
+    # if context.text != None:
+    #     pdb.set_trace()
 
 
 @step("I am a failing step")
