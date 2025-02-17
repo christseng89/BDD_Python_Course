@@ -563,3 +563,19 @@ behave examples\other --no-capture --no-logcapture --stop
     3 steps passed, 1 failed, 2 skipped, 0 undefined, 12 untested
 
 ```
+
+### Run without Running --dry-run
+```cmd
+behave examples\other --no-capture --no-logcapture --dry-run
+    ...
+    0 Features passed, 0 failed, 0 skipped, 4 untested
+    0 Scenarios passed, 0 failed, 0 skipped, 8 untested
+    0 Steps passed, 0 failed, 0 skipped, 0 undefined, 18 untested
+    
+behave examples\other --no-capture --no-logcapture
+    ...
+    2 features passed, 2 failed, 0 skipped
+    6 scenarios passed, 2 failed, 0 skipped
+    14 steps passed, 2 failed, 2 skipped, 0 undefined
+
+```
