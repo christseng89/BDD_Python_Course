@@ -32,12 +32,11 @@ def i_another_a_passing_step(context):
 
 @step("I am a failing step")
 def i_am_a_failing_step(context):
-    try:
-        print("")
-        print("Step FAILING 1")
-        print("Step FAILING 2")
-        print("Step FAILING 3")
-        print("Step FAILING 4")
-        raise Exception("❌ Failing on purpose")
-    except Exception as e:
-        print(f"Error: {str(e)}")
+
+    print("Step FAILING 1")
+    print("Step FAILING 2")
+    print("Step FAILING 3")
+    print("Step FAILING 4")
+
+    # Simulate step failure
+    raise Exception("❌ Failing on purpose")

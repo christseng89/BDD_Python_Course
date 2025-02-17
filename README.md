@@ -541,3 +541,15 @@ behave examples\other -e ".*smoke.*\.feature"
 behave examples\other -e ".*smoke.*\.feature" -t ~f1s1
 behave examples\other -e ".*smoke.*\.feature" -t ~f1s1 --no-capture
 ```
+
+### Rerun Failed Scenarios -f rerun (too complex)
+```cmd
+cd examples\other
+del rerun_fails.feature && behave -f rerun -o rerun_fails.feature
+REM continue
+REM continue
+
+behave @rerun_fails.feature && del rerun_fails.feature
+del rerun_fails.feature && behave
+cd ..\..
+```
