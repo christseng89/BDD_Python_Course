@@ -1,17 +1,16 @@
-
-
-
 @f1
 Feature: My Feature 1
 
   @f1s1
   Scenario: Scenario 1 of Feature 1
+    # """ ...
 
+    # """ is a Multiline string passing that is passed to the step definition into 'context.text'.
     Given I am a passing step
       """
-      This is just random string in 1st step.
-      Second line of 1st string. And
-      3rd line of 1st string.
+      ✅ This is just random string in 1st step.
+      ✅ Second line of 1st string. And
+      ✅ 3rd line of 1st string.
       """
     Then I another a passing step
       """

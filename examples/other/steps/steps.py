@@ -7,29 +7,37 @@ import json
 
 @step("I am a passing step")
 def i_am_a_passing_steps(context):
-    print("1ST PASS")
-    print("1ST PASS")
-    print("1ST PASS")
-    step_text = context.text
-    # pdb.set_trace()
+    print("1ST PASS 1")
+    print("1ST PASS 2")
+    print("1ST PASS 3")
+    # step_text = context.text
+    print(f"Context text:\n{context.text}")
+    if context.text != None:
+        pdb.set_trace()
 
 
 @step("I another a passing step")
 def i_another_a_passing_step(context):
-    print("Another PASSING")
-    print("Another PASSING")
-    print("Another PASSING")
-    my_json = json.loads(context.text)
-    # pdb.set_trace()
+    print("Another PASSING 1")
+    print("Another PASSING 2")
+    print("Another PASSING 3")
 
+    my_json = json.loads(context.text)
+    print(f"Context text:\n{context.text}")
+    print(f"✅ Context text Json: {my_json}")
+    print(f"✅ First name: {my_json['first_name']}")
+    if context.text != None:
+        pdb.set_trace()
 
 
 @step("I am a failing step")
 def i_am_a_failing_step(context):
-    print("")
-    print("Step FAILING")
-    print("Step FAILING")
-    print("Step FAILING")
-    print("Step FAILING")
-    raise Exception("Failing on purpose")
-
+    try:
+        print("")
+        print("Step FAILING 1")
+        print("Step FAILING 2")
+        print("Step FAILING 3")
+        print("Step FAILING 4")
+        raise Exception("❌ Failing on purpose")
+    except Exception as e:
+        print(f"Error: {str(e)}")

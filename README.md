@@ -503,3 +503,30 @@ REM (Pdb) context.config.userdata['prefix']
 REM 'ct'
 
 ```
+### Passing a Long String (Object) to a Step Definition
+```code snippet
+  // Feature File
+  Then I another a passing step
+    """
+    {"first_name": "Admas", "last_name": "Kinfu",
+    "phone": "4081111111"}
+    """
+  // Step Definition
+    @step("I another a passing step")
+    def i_another_a_passing_step(context):
+        print("Another PASSING 1")
+        print("Another PASSING 2")
+        print("Another PASSING 3")
+    
+        my_json = json.loads(context.text)
+        print(f"✅ Context text Json: {my_json}")
+        print(f"✅ First name: {my_json['first_name']}")
+
+```
+
+```cmd
+behave examples\other\my_feature_1.feature --no-capture
+REM context.text
+REM context.text.strip()
+REM continue
+```
