@@ -553,3 +553,13 @@ behave @rerun_fails.feature && del rerun_fails.feature
 del rerun_fails.feature && behave
 cd ..\..
 ```
+
+### Stop Execution at First Failure --stop
+```cmd
+behave examples\other --no-capture --no-logcapture --stop
+    ...
+    0 features passed, 1 failed, 0 skipped, 3 untested
+    1 scenario passed, 1 failed, 0 skipped, 6 untested
+    3 steps passed, 1 failed, 2 skipped, 0 undefined, 12 untested
+
+```
