@@ -4,35 +4,40 @@ import argparse
 from datetime import datetime
 import os
 import pathlib
-# import platform
+import platform
 import pdb
 
 # Define run_id as a global variable
 run_id = None
 
-# def add_drivers_to_path():
-#
-#     print("Adding webdrivers to path.")
-#     curr_file_path = pathlib.Path(__file__).parent.absolute()
-#
-#     if platform.system() == 'Darwin':
-#         webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'mac')
-#     elif platform.system() == 'Windows':
-#         webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'wimdows')
-#     elif platform.system() == 'Linux':
-#         webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'linux')
-#     else:
-#         raise Exception("Unknown platform. Unable to add webdrivers to path.")
-#
-#     current_path = os.environ.get['PATH']
-#     print(f"Webdriver path: {webdriver_path}")
-#     new_path = webdriver_path + ':' + current_path
-#     pdb.set_trace()
-#     print(f"New path: {new_path}")
-#     os.environ['PATH'] = new_path
+def add_drivers_to_path():
+    curr_file_path = pathlib.Path(__file__).parent.absolute()
+
+    if platform.system() == 'Darwin':
+        webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'mac')
+    elif platform.system() == 'Windows':
+        webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'windows')
+    elif platform.system() == 'Linux':
+        webdriver_path = os.path.join(curr_file_path, 'webdrivers', 'linux')
+    else:
+        raise Exception("Unknown platform. Unable to add webdrivers to path.")
+
+    # Fix: Call get() as a function, not a dictionary lookup
+    current_path = os.environ.get('PATH', '')  # Provide a default empty string in case PATH is not set
+    print(f"Webdriver path: {webdriver_path}")
+
+    new_path = webdriver_path + ':' + current_path
+    # pdb.set_trace()
+    # print(f"New path: {new_path}")
+    os.environ['PATH'] = new_path
+    print (f"\n✅ Added webdrivers path '{webdriver_path}' to Path.")
 
 def get_unique_run_id():
     global run_id
+
+    # BUILD_NUMBER is a Jenkins environment variable
+    # CUSTOM_BUILD_NUMBER is a custom environment variable
+
     if os.environ.get("BUILD_NUMBER"):
         unique_run_id = os.environ.get("BUILD_NUMBER")
     elif os.environ.get("CUSTOM_BUILD_NUMBER"):
@@ -80,9 +85,15 @@ if __name__ == '__main__':
 
     try:
         rs = subprocess.run(command, shell=True)
-        print(f"✅ Running command:\n{command}")
+        print(f"\n✅ Running command:\n{command}")
     except Exception as e:
-        print(f"❌ Error running command:\n{command}")
+        print(f"\n❌ Error running command:\n{command}")
+        print(e)
+
+    try:
+        add_drivers_to_path()
+    except Exception as e:
+        print(f"\n❌ Error adding drivers to path.")
         print(e)
 
     print(f"Return code: {rs.returncode}")
