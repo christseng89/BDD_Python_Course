@@ -620,3 +620,11 @@ Copy files from practical_examples to BDDPractice
 - BDDCommon\CommonConfigs\configurations.py
 - tests\python_main_site\environment.py
 
+### TCID-10-1 (FE) Valid user should be able to login (Framework Setup)
+```cmd
+pip install requests
+cd BDDPractice
+pip install .
+
+behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-10 
+```

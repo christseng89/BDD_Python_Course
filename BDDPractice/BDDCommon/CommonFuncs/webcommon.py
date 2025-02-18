@@ -19,8 +19,12 @@ def go_to(context, location, **kwargs):
     """
 
     if not location.startswith('http'):
-        _url = urlconfig.URLCONFIG.get(location)
-        base_url = urlconfig.URLCONFIG.get('base_url')
+        _url = urlconfig.URLCONFIG.get(location, "")
+        base_url = urlconfig.URLCONFIG.get('base_url', "")
+
+        if not _url or not base_url:
+            raise ValueError(f"❌ Invalid URL configuration. base_url={base_url}, _url={_url}, location={location}")
+
         url = base_url + _url
 
     browser = context.config.userdata.get('browser')
@@ -30,7 +34,16 @@ def go_to(context, location, **kwargs):
 
     if browser.lower() == 'chrome':
         # create instance of Firefox driver the browser type is not specified
-        context.driver = webdriver.Chrome()
+        chrome_driver_path = get_config()['WEBDRIVER']['chrome_driver_path']  # Update this path
+        print(f"✅ ✅ ✅ Chrome driver path: {chrome_driver_path}")
+        options = webdriver.ChromeOptions()
+        options.add_argument("--ignore-certificate-errors")
+        options.add_argument("--disable-gpu")
+        driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
+        driver.maximize_window()
+        context.driver = driver
+        context.driver.implicitly_wait(10)
+
     elif browser.lower() == 'headlesschrome':
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
