@@ -592,3 +592,18 @@ python examples\other\runner.py --test_dir=examples\other
 REM Custom Reports
 python examples\report_generation\custom_report_generator\report_generator1.py --input_json_file=examples\other\results_20250217175517\json_report_out.json --output_html_file=reports_my_json\my_custom_reports2.html
 ```
+
+### Runner Python Script to Run Tests with Tags
+```cmd
+python examples\other\runner.py --test_dir=examples\other --behave_options="-t f1s1"
+
+    unique_run_id
+        '20250218133637'
+    os.environ['UNIQUE_RUN_ID']
+        '20250218133637'
+    continue
+
+    ✅ Running command:
+    behave -k --no-capture -f json.pretty -o "C:\Users\samfi\PycharmProjects\BDD_Python_Course\examples\other\results_20250218133637\json_report_out.json" --junit --junit-directory "C:\Users\samfi\PycharmProjects\BDD_Python_Course\examples\other\results_20250218133637\junit_report_out" -t f1s1 examples\other
+    Return code: 1
+```

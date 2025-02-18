@@ -5,8 +5,10 @@ from datetime import datetime
 import os
 import pathlib
 # import platform
-# import pdb
+import pdb
 
+# Define run_id as a global variable
+run_id = None
 
 # def add_drivers_to_path():
 #
@@ -30,7 +32,7 @@ import pathlib
 #     os.environ['PATH'] = new_path
 
 def get_unique_run_id():
-
+    global run_id
     if os.environ.get("BUILD_NUMBER"):
         unique_run_id = os.environ.get("BUILD_NUMBER")
     elif os.environ.get("CUSTOM_BUILD_NUMBER"):
@@ -39,12 +41,13 @@ def get_unique_run_id():
         unique_run_id = datetime.now().strftime('%Y%m%d%H%M%S')
 
     os.environ['UNIQUE_RUN_ID'] = unique_run_id
+    pdb.set_trace()
 
     return unique_run_id
 
 def create_output_directory(prefix='results_'):
+    run_id = get_unique_run_id()
 
-    global run_id
     if not run_id:
         raise Exception("Variable 'run_id' is not set. Unable to create output directory")
 
@@ -57,8 +60,6 @@ def create_output_directory(prefix='results_'):
     return dir_to_create
 
 if __name__ == '__main__':
-    run_id = get_unique_run_id()
-
     parser = argparse.ArgumentParser()
     parser.add_argument('--test_dir', required=True, help="Location of test file.")
     parser.add_argument('--behave_options', type=str, required=False,
