@@ -34,3 +34,4 @@ dist/
 *.egg-info/
 reports*/
 results*/
+examples/other/webdrivers/

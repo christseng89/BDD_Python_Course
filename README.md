@@ -607,3 +607,16 @@ python examples\other\runner.py --test_dir=examples\other --behave_options="-t f
     behave -k --no-capture -f json.pretty -o "C:\Users\samfi\PycharmProjects\BDD_Python_Course\examples\other\results_20250218133637\json_report_out.json" --junit --junit-directory "C:\Users\samfi\PycharmProjects\BDD_Python_Course\examples\other\results_20250218133637\junit_report_out" -t f1s1 examples\other
     Return code: 1
 ```
+
+## BDD Practice Section
+
+### Introduction
+- TESTID (Test Case ID, not in order)
+- Front End (FE), Back End (BE)
+
+### Prepare the BDDPractice Project
+Copy files from practical_examples to BDDPractice
+- properties.ini
+- BDDCommon\CommonConfigs\configurations.py
+- tests\python_main_site\environment.py
+
