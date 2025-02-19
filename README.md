@@ -676,3 +676,7 @@ behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-11
 ```cmd
 behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-12
 ```
+
+### Backend Helper - http GET method
+https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
+

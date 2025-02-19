@@ -1,5 +1,6 @@
 from woocommerce import API
 from BDDCommon.CommonHelpers.credentialsHelper import CredentialsHelper
+from BDDCommon.CommonConfigs.configurations import get_config
 import logging as logger
 
 class WooRequestsHelper(object):
@@ -10,7 +11,7 @@ class WooRequestsHelper(object):
         wc_reds = creds_helper.get_wc_api_keys()
 
         self.wcapi = API(
-            url="http://mystore.local",
+            url=get_config()['woo_commerce']['url'],
             consumer_key= wc_reds['wc_key'],
             consumer_secret= wc_reds['wc_secret'],
             version="wc/v3"
