@@ -679,4 +679,10 @@ behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-12
 
 ### Backend Helper - http GET method
 https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
+// Using properties.ini and get_config() method
+wooRequestHelpers.py
 
+```cmd
+python BDDCommon\CommonHelpers\wooRequestHelpers.py
+
+```

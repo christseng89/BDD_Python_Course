@@ -1,19 +1,14 @@
 from woocommerce import API
-from BDDCommon.CommonHelpers.credentialsHelper import CredentialsHelper
 from BDDCommon.CommonConfigs.configurations import get_config
 import logging as logger
 
 class WooRequestsHelper(object):
 
     def __init__(self):
-
-        creds_helper = CredentialsHelper()
-        wc_reds = creds_helper.get_wc_api_keys()
-
         self.wcapi = API(
             url=get_config()['woo_commerce']['url'],
-            consumer_key= wc_reds['wc_key'],
-            consumer_secret= wc_reds['wc_secret'],
+            consumer_key= get_config()['woo_commerce']['consumer_key'],
+            consumer_secret= get_config()['woo_commerce']['consumer_secret'],
             version="wc/v3"
         )
     def assert_satus_code(self):
@@ -54,13 +49,25 @@ class WooRequestsHelper(object):
 
 if __name__ == '__main__':
 
+    # Test #1 - Send a GET request to fetch products
     myObj = WooRequestsHelper()
-    # myObj.get("products")
+    response = myObj.get("products")
+    
+    import json
+    print(f"Response: {json.dumps(response, indent=4)}")  # Pretty-print JSON response
 
+    # Test #2 - Send a GET request to fetch status code
+    status_code = myObj.wcapi.get("products").status_code  # Send another GET request to fetch status code
+    print(f"\nResponse Status: {status_code}")
+
+    # Test #3 - Send a POST request to create a Customer
     payload = {
-                "email": "dummyemail2@supersqa.com",
-                "password": "123abc"
+                "email": get_config()['woo_commerce']['username'],
+                "password": get_config()['woo_commerce']['password'],
                }
+    try:
+        response = myObj.post("customers", params=payload, expected_status_code=201)
+        import pprint; pprint.pprint(response)
 
-    response = myObj.post("customers", params=payload, expected_status_code=201)
-    import pprint; pprint.pprint(response)
+    except Exception as e:
+        print(f"\nException: {e}")
