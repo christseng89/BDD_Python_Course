@@ -2,11 +2,13 @@
 Module containing common function used in several tests.
 Functions that are not test or feature specific.
 """
-
-from selenium import webdriver
-from BDDCommon.CommonConfigs import urlconfig
 import time
 import logging as logger
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from BDDCommon.CommonConfigs import urlconfig
+from BDDCommon.CommonConfigs.configurations import get_config
+
 
 def go_to(context, location, **kwargs):
     """

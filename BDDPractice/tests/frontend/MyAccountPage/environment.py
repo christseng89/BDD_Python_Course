@@ -1,9 +1,7 @@
 from BDDPractice.BDDCommon.CommonFuncs.webcommon import go_to
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-# from selenium.webdriver.chrome.options import Options
 
-from BDDCommon.CommonConfigs.configurations import get_config
 from BDDCommon.CommonFuncs.webcommon import go_to
 
 def before_all(context):
@@ -17,7 +15,7 @@ def before_scenario(context, scenario):
     Set up WebDriver before each scenario.
     """
 
-    go_to(context, 'my_account')
+    go_to(context, 'my-account')
 
 def after_scenario(context, scenario):
     """

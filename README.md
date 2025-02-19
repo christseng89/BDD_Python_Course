@@ -646,6 +646,16 @@ tests\steps\main_steps.py
     from BDDCommon.CommonSteps import order_api_steps
     from BDDCommon.CommonSteps import coupons_api_steps
 ```
+Url Config
+```cmd
+- BDDCommon\CommonConfigs\urlconfig.py
+   
+    URLCONFIG = {
+    ...
+        'base_url': 'http://mylocalwp.local/',
+        'my account': '/my-account'
+    ...
+```
 
 ```cmd
 cd BDDPractice
@@ -654,3 +664,10 @@ pip install .
 
 behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-10 
 ```
+
+### TCID-11 (FE) User with wrong password should get correct error message
+
+```cmd
+behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-11
+```
+

@@ -7,8 +7,8 @@
     Scenario: Valid user should be able to login
 
       Given I go to 'my account' page
-      When I type 'fist.test.user@supersqa.com' into username of login form
-      And I type 'testuserpassw' into password of login form
+      When I type 'admin' into username of login form
+      And I type 'admin$123' into password of login form
       And I click on the 'login' button
       Then user should be logged in
 
@@ -16,10 +16,10 @@
     Scenario: User with wrong password should gt correct error message
 
       Given I go to 'my account' page
-      When I type 'fist.test.user@supersqa.com' into username of login form
+      When I type 'admin' into username of login form
       And I type '123456' into password of login form
       And I click on the 'login' button
-      Then error messsage with email 'fist.test.user@supersqa.com' should be displayed
+      Then error messsage with email 'admin' should be displayed
 
     @TCID-12
     Scenario: User with none-existing email should get correct error message

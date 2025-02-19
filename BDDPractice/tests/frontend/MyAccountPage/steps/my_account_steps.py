@@ -66,41 +66,43 @@ def user_should_be_logged_in(context):
     webcommon.assert_element_visible(context, nav_bar_type, nav_bar_text)
     webcommon.assert_element_visible(context, logout_type, logout_text)
 
+
 @step("error messsage with email '{email}' should be displayed")
 def error_message_with_email_should_be_displayed(context, email):
     """
-
+    Step to verify that the error message appears when a wrong password is entered.
     """
 
-    expected_msg = "Error: The password you entered for the email address {email} is incorrect. Lost your password?".format(email=email)
+    expected_msg = f"Error: The password you entered for the email address {email} is incorrect. Lost your password?".lower()
 
     error_box_type = MY_ACCOUNT_LOCATORS['error_box']['type']
     error_box_text = MY_ACCOUNT_LOCATORS['error_box']['locator']
 
-    is_exist = webcommon.element_contains_text(context, expected_msg, error_box_type, error_box_text)
+    actual_message = webcommon.get_element_text(context, error_box_type, error_box_text).lower()
 
-    if is_exist:
-        print('Pass')
+    if expected_msg in actual_message:
+        print(f"✅ Test Passed: Message '{expected_msg}' displayed correctly.")
     else:
-        raise Exception("Correct error message not displayed at failed loggen. Email: {}".format(email))
+        print(f"❌ Test Failed: Expected error message '{expected_msg}', but got '{actual_message}'")
+        assert False, f"Authentication {email} failed with '{actual_message}' error."
 
-    pdb.set_trace()
+    # pdb.set_trace()
 
 @step("error messsage with 'Unknown email' should be displayed")
 def error_message_with_unknown_email_should_be_displayed(context):
     """
 
     """
-    expected_msg = "Unknown email address. Check again or try your username."
+    expected_error_msg = "unknown email address. check again or try your username."
 
     error_box_type = MY_ACCOUNT_LOCATORS['error_box']['type']
     error_box_text = MY_ACCOUNT_LOCATORS['error_box']['locator']
 
-    is_exist = webcommon.element_contains_text(context, expected_msg, error_box_type, error_box_text)
-
-    if is_exist:
-        print('Pass')
+    actual_message = webcommon.get_element_text(context, error_box_type, error_box_text).lower()
+    print (f"Actual message: {actual_message}")
+    if actual_message not in expected_error_msg:
+        print('Passed...')
     else:
-        raise Exception("Correct error message not displayed at failed loggen. None existing email: {}")
-
-    pdb.set_trace()
+        # raise Exception("Correct error message not displayed at failed loggen. None existing email: {}")
+        assert False, f"❌ Unknown email address. check again or try your username."
+    # pdb.set_trace()
