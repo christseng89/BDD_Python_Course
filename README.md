@@ -671,3 +671,8 @@ behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-10
 behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-11
 ```
 
+### TCID-12 (FE) User with none-existing email should get correct error message
+
+```cmd
+behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-12
+```
