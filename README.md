@@ -621,9 +621,35 @@ Copy files from practical_examples to BDDPractice
 - tests\python_main_site\environment.py
 
 ### TCID-10-1 (FE) Valid user should be able to login (Framework Setup)
+
+BDDCommon folder structure
 ```cmd
-pip install requests
+- CommonAPI
+- CommonConfigs
+- CommonDAO
+- CommonFuncs
+- CommonHelpers
+- CommonSteps
+```
+
+Main Steps
+```cmd
+tests\steps\main_steps.py
+    from BDDCommon.CommonSteps import webstepscommon
+    from frontend.MyAccountPage.steps import my_account_steps
+    from frontend.HomePage.steps import home_page_steps
+    from frontend.CartPage.steps import cart_page_steps
+    from frontend.CheckoutPage.steps import checkout_page_steps
+    from frontend.OrderReceivedPage.steps import order_received_page_steps
+    from BDDCommon.CommonSteps import products_api_steps
+    from BDDCommon.CommonSteps import user_api_steps
+    from BDDCommon.CommonSteps import order_api_steps
+    from BDDCommon.CommonSteps import coupons_api_steps
+```
+
+```cmd
 cd BDDPractice
+pip install -r requirements.txt
 pip install .
 
 behave tests\frontend\MyAccountPage --no-capture --no-logcapture -t TCID-10 

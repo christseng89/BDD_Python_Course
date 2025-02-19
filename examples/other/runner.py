@@ -87,7 +87,7 @@ if __name__ == '__main__':
         rs = subprocess.run(command, shell=True)
         print(f"\n✅ Running command:\n{command}")
     except Exception as e:
-        print(f"\n❌ Error running command:\n{command}")
+        print(f"\n Error running command:\n{command}")
         print(e)
 
     try:
