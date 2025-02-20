@@ -684,5 +684,9 @@ wooRequestHelpers.py
 
 ```cmd
 python BDDCommon\CommonHelpers\wooRequestHelpers.py
+```
 
+### Backend Helper - http POST method
+```cmd
+python BDDCommon\CommonHelpers\wooRequestHelpers.py
 ```
