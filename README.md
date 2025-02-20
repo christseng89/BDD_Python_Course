@@ -690,3 +690,11 @@ python BDDCommon\CommonHelpers\wooRequestHelpers.py
 ```cmd
 python BDDCommon\CommonHelpers\wooRequestHelpers.py
 ```
+### Backend Helper - Database Helper
+dbHelpers.py
+
+```cmd
+python BDDCommon\CommonHelpers\dbHelpers.py
+    ✅ MySQL connection successful!
+
+```

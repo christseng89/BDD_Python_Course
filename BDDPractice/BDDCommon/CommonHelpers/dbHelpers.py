@@ -1,23 +1,33 @@
-
 import pymysql
-from BDDCommon.CommonHelpers.credentialsHelper import CredentialsHelper
-
+from BDDCommon.CommonConfigs.configurations import get_config
 
 class DBHelpers(object):
 
     def __init__(self):
-        creds_helper = CredentialsHelper()
-        creds = creds_helper.get_db_credentials()
-        self.host = 'localhost'
-        self.db_user = creds['db_user']
-        self.db_password = creds['db_password']
-        self.socket = '/Users/admas/Library/Application Support/Local/run/5MQbIjSnl/mysql/mysqld.sock'
+        self.host = get_config()['mysql']['host']
+        self.port = int(get_config()['mysql']['port'])
+        self.db_user = get_config()['mysql']['db_user']
+        self.db_password = get_config()['mysql']['db_password']
 
     def create_connection(self):
-
-        self.connection = pymysql.connect(host=self.host, user=self.db_user, password=self.db_password, unix_socket=self.socket)
+        """
+        Creates a database connection.
+        """
+        try:
+            self.connection = pymysql.connect(
+                host=self.host, 
+                port=self.port, 
+                user=self.db_user, 
+                password=self.db_password
+            )
+            return self.connection
+        except Exception as e:
+            raise Exception(f"Failed to connect to MySQL: {str(e)}")
 
     def execute_select(self, sql):
+        """
+        Executes a SELECT SQL query and returns the results as a dictionary.
+        """
         try:
             self.create_connection()
             cur = self.connection.cursor(pymysql.cursors.DictCursor)
@@ -25,12 +35,23 @@ class DBHelpers(object):
             rs_dict = cur.fetchall()
             cur.close()
         except Exception as e:
-            raise Exception("Failed running sql {}. Error: {}".format(sql, str(e)))
+            raise Exception(f"Failed running SQL: {sql}. Error: {str(e)}")
         finally:
             self.connection.close()
 
         return rs_dict
 
-
     def execute_sql(self):
         pass
+
+# ✅ Add a test connection when running the script
+if __name__ == '__main__':
+    db_helper = DBHelpers()
+
+    try:
+        # Test connection
+        connection = db_helper.create_connection()
+        print("✅ MySQL connection successful!")
+        connection.close()
+    except Exception as e:
+        print(f"❌ MySQL connection failed: {e}")
