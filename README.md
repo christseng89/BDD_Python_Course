@@ -698,3 +698,24 @@ python BDDCommon\CommonHelpers\dbHelpers.py
     ✅ MySQL connection successful!
 
 ```
+
+### TCID-24-1 (BE) Verify 'GET /products' returns all products
+
+```cmd
+@TCID-24
+Scenario: Verify 'get all products' returns the expected number of products
+
+    Given I get number of available products from db
+    When I get number of available products from api
+    Then the total number of products in api should be same as in db
+```
+
+```notes
+Step definition from BDDCommon\CommonSteps\products_api_steps.py
+DAO from BDDCommon\CommonDAO\productsDAO.py
+```
+
+```cmd
+pip install .
+behave tests\backend\products\ --no-capture --no-logcapture -t TCID-24
+```
