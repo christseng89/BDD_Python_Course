@@ -11,3 +11,4 @@ host = localhost
 port = 10005
 user = root
 password = root...
+per_page = 10
