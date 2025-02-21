@@ -12,7 +12,7 @@ def i_get_number_of_available_products_from_db(context):
     all_rows = ProductsDAO().get_app_products_from_db()
     print("")
     print("✅ Number of products in db: {}".format(len(all_rows)))
-    # then set the number available product as context varialbe
+    # then set the number available product as context variable
     context.qty_products_db = len(all_rows)
 
 @step("I get number of available products from api")
@@ -26,7 +26,7 @@ def i_get_number_of_available_products_from_api(context):
     print("")
     print("✅ Number of products in API: {}".format(number_of_products_in_api))
 
-    # set context variable with numver of products
+    # set context variable with number of products
     context.qty_products_api = number_of_products_in_api
 
 @step("the total number of products in api should be same as in db")
@@ -45,6 +45,7 @@ def i_get_random_product_from_database(context, qty):
     """
 
     context.random_products = ProductsDAO().get_random_products_from_db(qty)
+    print(f"✅ Get random product id: '{context.random_products[0]['ID']}'.")
 
 @step("I verify product api returns correct product by id")
 def i_verify_product_api_returns_correct_product_by_id(context):
@@ -52,6 +53,7 @@ def i_verify_product_api_returns_correct_product_by_id(context):
     product_id = context.random_products[0]['ID']
 
     rs_get_product = products_api.get_product_by_id(product_id)
+    print(f"✅ Correct product by id: '{product_id}' returned from API.")
 
     assert rs_get_product['id'] == product_id, "Wrong product id when calling 'get product by id'."
     assert rs_get_product['name'] == context.random_products[0]['post_title'], \

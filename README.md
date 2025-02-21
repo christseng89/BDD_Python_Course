@@ -719,3 +719,22 @@ DAO from BDDCommon\CommonDAO\productsDAO.py
 pip install .
 behave tests\backend\products\ --no-capture --no-logcapture -t TCID-24
 ```
+
+### TCID-25 (BE) Verify 'products/id' returns a product with the given id
+```note
+- Step definition
+    BDDCommon\CommonSteps\products_api_steps.py
+        ...
+        from BDDCommon.CommonDAO.productsDAO import ProductsDAO
+        from BDDCommon.CommonAPI import products_api
+        ...
+    
+    SQL => 
+        SELECT * FROM local.wp_posts WHERE post_type = 'product' ORDER BY RAND() LIMIT 1; # Performance issue;
+        SELECT * FROM local.wp_posts WHERE post_type = 'product' ORDER BY id DESC LIMIT 5000; # Randomly by python;
+    
+```
+
+```cmd
+behave tests\backend\products\ --no-capture --no-logcapture -t TCID-25
+```
