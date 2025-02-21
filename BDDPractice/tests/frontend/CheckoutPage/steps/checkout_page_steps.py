@@ -64,3 +64,5 @@ def i_click_on_place_order_button_in_the_checkout_page(context):
 
     btn_locator = CHECKOUT_PAGE_LOCATORS['place_order_btn']
     webcommon.click(context, btn_locator['type'], btn_locator['locator'])
+
+    print ("✅ Place Order button clicked successfully")

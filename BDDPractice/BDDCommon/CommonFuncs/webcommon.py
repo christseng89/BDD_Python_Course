@@ -2,10 +2,12 @@
 Module containing common function used in several tests.
 Functions that are not test or feature specific.
 """
+import sys
 import time
 import logging as logger
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.common.exceptions import WebDriverException
 from BDDCommon.CommonConfigs import urlconfig
 from BDDCommon.CommonConfigs.configurations import get_config
 
@@ -14,10 +16,8 @@ def go_to(context, location, **kwargs):
     """
     Function to start instance of the specified browser and navigate to the specified url.
 
-    :param url: the url to navigate to
-    :param browser_type: the type of browser to start (Default is Firefox)
-
-    :return: driver: browser instance
+    :param location: the url or page key to navigate to
+    :param context: Behave context containing the driver
     """
 
     if not location.startswith('http'):
@@ -25,47 +25,53 @@ def go_to(context, location, **kwargs):
         base_url = urlconfig.URLCONFIG.get('base_url', "")
 
         if not _url or not base_url:
-            raise ValueError(f"❌ Invalid URL configuration. base_url={base_url}, _url={_url}, location={location}")
+            print(f"❌ Invalid URL configuration. base_url={base_url}, _url={_url}, location={location}")
+            sys.exit(1)  # Exit if URL is invalid
 
         url = base_url + _url
-
-    browser = context.config.userdata.get('browser')
-    if not browser:
-        browser = 'chrome'
-
-
-    if browser.lower() == 'chrome':
-        # create instance of Firefox driver the browser type is not specified
-        chrome_driver_path = get_config()['WEBDRIVER']['chrome_driver_path']  # Update this path
-        print(f"✅ ✅ ✅ Chrome driver path: {chrome_driver_path}")
-        options = webdriver.ChromeOptions()
-        options.add_argument("--ignore-certificate-errors")
-        options.add_argument("--disable-gpu")
-        driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
-        driver.maximize_window()
-        context.driver = driver
-        context.driver.implicitly_wait(10)
-
-    elif browser.lower() == 'headlesschrome':
-        options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
-        context.driver = webdriver.Chrome(options=options)
-    elif browser.lower() in ('ff', 'firefox'):
-        # create instance of the Chrome driver
-        context.driver = webdriver.Firefox()
     else:
-        raise Exception("The browser type '{}' is not supported".format(context))
+        url = location
 
-    # adding implicit wait
-    wait = int(kwargs['implicitly_wait']) if 'implicitly_wait' in kwargs.keys() else 15
-    context.driver.implicitly_wait(wait)
+    browser = context.config.userdata.get('browser', 'chrome')
 
-    # clean the url and go to the url
-    url = url.strip()
-    # logger.info("2222")
-    # logger.info(f"✅ Navigating to URL: {url}")
-    # logger.info(f"Navigating to URL: {url}")
-    context.driver.get(url)
+    try:
+        if browser.lower() == 'chrome':
+            chrome_driver_path = get_config()['WEBDRIVER']['chrome_driver_path']
+            print(f"✅ Chrome driver path: {chrome_driver_path}")
+            options = webdriver.ChromeOptions()
+            options.add_argument("--ignore-certificate-errors")
+            options.add_argument("--disable-gpu")
+            driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
+
+        elif browser.lower() == 'headlesschrome':
+            options = webdriver.ChromeOptions()
+            options.add_argument('--headless')
+            driver = webdriver.Chrome(options=options)
+
+        elif browser.lower() in ('ff', 'firefox'):
+            driver = webdriver.Firefox()
+
+        else:
+            print(f"❌ Unsupported browser type: {browser}")
+            sys.exit(1)  # Exit if browser is not supported
+
+        driver.maximize_window()
+        driver.implicitly_wait(10)
+        context.driver = driver
+
+        # Try to open the website
+        url = url.strip()
+        # print(f"🌍 Navigating to URL: {url}")
+        context.driver.get(url)
+
+    except WebDriverException as e:
+        print(f"❌ Failed to load the website: {url}")
+        # Ensure WebDriver is closed properly before exiting
+        if 'driver' in locals() and driver is not None:
+            print("🛑 Closing WebDriver...")
+            driver.quit()
+
+        sys.exit(1)  # Exit if unable to reach the website
 
 
 def assert_page_title(context, expected_title):
