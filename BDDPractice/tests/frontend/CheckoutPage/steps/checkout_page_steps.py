@@ -31,6 +31,7 @@ def i_fill_in_the_billing_details_form(context):
     l_name = rand_name['l_name']
     addr_1 = '123 Main st.'
     city = 'San Francisco'
+    state = 'CA'
     _zip = 94111
     phone = '5101111111'
     email = generate_random_email_and_password()['email']
@@ -38,20 +39,22 @@ def i_fill_in_the_billing_details_form(context):
     email_locator = CHECKOUT_PAGE_LOCATORS['billing_email_input']
     f_name_locator = CHECKOUT_PAGE_LOCATORS['billing_f_name_input']
     l_name_locator = CHECKOUT_PAGE_LOCATORS['billing_l_name_input']
-    # street_locator = CHECKOUT_PAGE_LOCATORS['billing_address1_input']
-    # city_locator = CHECKOUT_PAGE_LOCATORS['billing_city_input']
-    # zip_locator = CHECKOUT_PAGE_LOCATORS['billing_zip_input']
-    # phone_locator = CHECKOUT_PAGE_LOCATORS['billing_phone_input']
+    street_locator = CHECKOUT_PAGE_LOCATORS['billing_address1_input']
+    city_locator = CHECKOUT_PAGE_LOCATORS['billing_city_input']
+    state_locator = CHECKOUT_PAGE_LOCATORS['billing_state_input']
+    zip_locator = CHECKOUT_PAGE_LOCATORS['billing_zip_input']
+    phone_locator = CHECKOUT_PAGE_LOCATORS['billing_phone_input']
 
 
     # start input the values
     webcommon.type_into_element(context, email, email_locator['type'], email_locator['locator'])
     webcommon.type_into_element(context, f_name, f_name_locator['type'], f_name_locator['locator'])
     webcommon.type_into_element(context, l_name, l_name_locator['type'], l_name_locator['locator'])
-    # webcommon.type_into_element(context, addr_1, street_locator['type'], street_locator['locator'])
-    # webcommon.type_into_element(context, city, city_locator['type'], city_locator['locator'])
-    # webcommon.type_into_element(context, _zip, zip_locator['type'], zip_locator['locator'])
-    # webcommon.type_into_element(context, phone, phone_locator['type'], phone_locator['locator'])
+    webcommon.type_into_element(context, addr_1, street_locator['type'], street_locator['locator'])
+    webcommon.type_into_element(context, city, city_locator['type'], city_locator['locator'])
+    webcommon.type_into_element(context, state, state_locator['type'], state_locator['locator'])
+    webcommon.type_into_element(context, _zip, zip_locator['type'], zip_locator['locator'])
+    webcommon.type_into_element(context, phone, phone_locator['type'], phone_locator['locator'])
 
     print ("✅ Fill in billing details successfully")
 
