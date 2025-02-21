@@ -29,6 +29,7 @@ def i_call_create_customer_api(context):
            "Call email: {}, response email: {}".format(context.random_email, create_user_response['email'])
 
     expected_user_name = context.random_email.split('@')[0]
+    print(f"✅ API created username: {expected_user_name}")
     assert create_user_response['username'] == expected_user_name, "Wrong 'username' in response of 'create user' api." \
            "Call username: {}, response username: {}".format(expected_user_name, create_user_response['username'])
 
@@ -39,5 +40,7 @@ def customer_should_be_created(context):
 
     assert len(db_user) == 1, "Find user in db by email found {} resulsts. Email: {}".format(len(db_user), context.random_email)
     expected_user_name = context.random_email.split('@')[0]
+    print(f"✅ Created username in DB: {expected_user_name}")
+
     assert db_user[0]['user_login'] == expected_user_name, "User created in db does not have the expected user name. " \
        "Exptected: {}, Actual: {}".format(expected_user_name, db_user[0]['user_login'])

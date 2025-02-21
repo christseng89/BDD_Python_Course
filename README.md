@@ -729,6 +729,7 @@ behave tests\backend\products\ --no-capture --no-logcapture -t TCID-24
         from BDDCommon.CommonAPI import products_api
         ...
     
+    BDDCommon\CommonDAO\productsDAO.py
     SQL => 
         SELECT * FROM local.wp_posts WHERE post_type = 'product' ORDER BY RAND() LIMIT 1; # Performance issue;
         SELECT * FROM local.wp_posts WHERE post_type = 'product' ORDER BY id DESC LIMIT 5000; # Randomly by python;
@@ -737,4 +738,19 @@ behave tests\backend\products\ --no-capture --no-logcapture -t TCID-24
 
 ```cmd
 behave tests\backend\products\ --no-capture --no-logcapture -t TCID-25
+```
+
+### TCID-29-1 (BE) Verify 'POST /customers' creates user via API then DB
+```note
+- Feature file
+  Given I generate random email and password
+  When I call 'create customer' api
+  Then customer should be created
+- Step definition
+    BDDCommon\CommonSteps\user_api_steps.py
+    BDDCommon\CommonDAO\userDAO.py
+```
+
+```cmd
+behave tests\backend\users\ --no-capture --no-logcapture -t TCID-29
 ```
