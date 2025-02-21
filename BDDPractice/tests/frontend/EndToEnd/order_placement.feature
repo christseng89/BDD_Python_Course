@@ -12,6 +12,6 @@
       And I click on 'Proceed to Checkout' button in the cart page
       And I verify 'Checkout' page is loaded
       And I fill in the billing details form
-#      And I click on 'Place order' button in the checkout page
+      And I click on 'Place order' button in the checkout page
 #      Then order received page should load with correct data
 #      Then I verify order is created in database

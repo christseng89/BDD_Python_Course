@@ -49,7 +49,7 @@ CHECKOUT_PAGE_LOCATORS = {
     'billing_zip_input': {'type': 'css selector', 'locator': 'input#billing-postcode, input[autocomplete="postal-code"]'},
 
     'billing_phone_input': {'type': 'css selector', 'locator': 'input#billing-phone, input[autocomplete="tel"]'},
-    'place_order_btn': {'type': 'css selector', 'locator': 'button#place_order'}
+    'place_order_btn': {'type': 'css selector', 'locator': 'button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained'}
 }
 
 
