@@ -8,9 +8,9 @@ import logging as logger
 @step("I add {qty} random item to cart from the homepage")
 def i_add_random_item_to_cart_from_the_homepage(context, qty):
 
-    logger.info("1111")
-    logger.info("1111")
-    logger.info(f"Adding {qty} items to cart")
+    # logger.info("1111")
+    # logger.info("1111")
+    logger.info(f"✅ Adding {qty} items to cart")
 
 
     cart_btns = HOME_PAGE_LOCATORS['all_add_cart_btns']
@@ -32,6 +32,7 @@ def i_click_on_cart_in_the_top_nav_bar_and_verify_cart_page_opens(context):
 
         cart_info_locator = HOME_PAGE_LOCATORS['cart_info_box']
         webcommon.click(context, cart_info_locator['type'], cart_info_locator['locator'])
-
+        
         webcommon.assert_url_contains(context, '/cart/')
 
+        logger.info("✅ Cart page opened successfully")

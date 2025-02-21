@@ -62,9 +62,9 @@ def go_to(context, location, **kwargs):
 
     # clean the url and go to the url
     url = url.strip()
-    logger.info("2222")
-    logger.info(f"Navigating to URL: {url}")
-    logger.info(f"Navigating to URL: {url}")
+    # logger.info("2222")
+    # logger.info(f"✅ Navigating to URL: {url}")
+    # logger.info(f"Navigating to URL: {url}")
     context.driver.get(url)
 
 

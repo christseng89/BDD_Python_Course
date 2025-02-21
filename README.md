@@ -754,3 +754,17 @@ behave tests\backend\products\ --no-capture --no-logcapture -t TCID-25
 ```cmd
 behave tests\backend\users\ --no-capture --no-logcapture -t TCID-29
 ```
+
+### TCID-33-1 (FE) New user place order with 1 item without creating account
+```note
+- Feature file
+  order_placement.feature
+  
+- Step definition
+    frontend\CartPage\steps\cart_api_steps.py
+    
+```
+
+```cmd
+behave tests\frontend\EndToEnd --no-capture --no-logcapture -t TCID-33
+```

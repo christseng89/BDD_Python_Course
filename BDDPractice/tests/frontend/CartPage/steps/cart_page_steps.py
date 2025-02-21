@@ -38,7 +38,8 @@ def i_click_on_proceed_to_checkout_button_in_the_cart_page(context):
             print(f"Failed to click on 'Proceed to checkout' Retry number: {try_count}")
     else:
         raise Exception(f"Failed to click on 'Proceed to checkout' after retrying '{max_try}' times.")
-
+    
+    logger.info("✅ Clicked on 'Proceed to checkout' button in the cart page")
 
 @when("I get the total dollar amount of the cart")
 def i_get_the_total_dollar_amount_of_the_cart(context):

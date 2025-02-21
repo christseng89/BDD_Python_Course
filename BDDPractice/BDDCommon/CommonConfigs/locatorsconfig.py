@@ -23,14 +23,12 @@ HOME_PAGE_LOCATORS = {
 }
 
 CART_PAGE_LOCATORS = {
-
-
-'free_shipping_radio': {'type': 'css selector', 'locator': 'li input#shipping_method_0_free_shipping5'},
-'proceed_to_checkout_btn': {'type': 'css selector', 'locator': 'div.wc-proceed-to-checkout a.checkout-button'},
-'total_cart_value': {'type': 'css selector', 'locator': 'tr.order-total span.woocommerce-Price-amount.amount'},
-'coupon_code_field': {'type': 'css selector', 'locator': 'div.coupon input#coupon_code'},
-'apply_coupon_button': {'type': 'css selector', 'locator': 'div.coupon button[name="apply_coupon"]'}
-
+    'free_shipping_radio': {'type': 'css selector', 'locator': 'li input#shipping_method_0_free_shipping5'},
+    # FIX: Updated the correct selector for 'Proceed to Checkout'
+    'proceed_to_checkout_btn': {'type': 'css selector', 'locator': 'a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained'},
+    'total_cart_value': {'type': 'css selector', 'locator': 'tr.order-total span.woocommerce-Price-amount.amount'},
+    'coupon_code_field': {'type': 'css selector', 'locator': 'div.coupon input#coupon_code'},
+    'apply_coupon_button': {'type': 'css selector', 'locator': 'div.coupon button[name="apply_coupon"]'}
 }
 
 CHECKOUT_PAGE_LOCATORS = {
