@@ -761,8 +761,9 @@ behave tests\backend\users\ --no-capture --no-logcapture -t TCID-29
   order_placement.feature
   
 - Step definition
-    frontend\CartPage\steps\cart_api_steps.py
-    
+    tests\frontend\CartPage\steps\cart_page_steps.py
+    tests\frontend\CheckoutPage\steps\checkout_page_steps.py
+
 ```
 
 ```cmd

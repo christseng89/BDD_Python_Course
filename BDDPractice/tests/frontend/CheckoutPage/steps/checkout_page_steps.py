@@ -5,25 +5,43 @@ from BDDCommon.CommonHelpers.utilitiesHelpers import generate_random_email_and_p
 from BDDCommon.CommonHelpers.utilitiesHelpers import generate_random_first_and_last_names
 
 @when("I verify 'Checkout' page is loaded")
+# def i_verify_checkout_page_is_loaded(context):
+#     """
+#
+#     """
+#
+#     # check the url
+#     webcommon.assert_url_contains(context, '/checkout/')
+#
+#     # check the heading text
+#     expected_text = 'Checkout'
+#     header_locator = CHECKOUT_PAGE_LOCATORS['page_header']
+#     # import pdb; pdb.set_trace()
+#
+#     contains = webcommon.element_contains_text(context, expected_text, header_locator['type'], header_locator['locator'])
+#     assert contains, f"Header of checkout page does not contain the text '{expected_text}'."
+#
+#     # check some elements are visible
+#     form_locator = CHECKOUT_PAGE_LOCATORS['checkout_form']
+#     webcommon.assert_element_visible(context, form_locator['type'], form_locator['locator'])
 def i_verify_checkout_page_is_loaded(context):
-    """
+    """ Verify the Checkout page is loaded """
 
-    """
-
-    # check the url
+    # Check if URL contains 'checkout'
     webcommon.assert_url_contains(context, '/checkout/')
 
-    # check the heading text
+    # Verify header text exists
     expected_text = 'Checkout'
     header_locator = CHECKOUT_PAGE_LOCATORS['page_header']
     contains = webcommon.element_contains_text(context, expected_text, header_locator['type'], header_locator['locator'])
     assert contains, f"Header of checkout page does not contain the text '{expected_text}'."
+    print("✅ Checkout page header is loaded successfully")
 
-    # check some elements are visible
+    # Ensure form is visible
     form_locator = CHECKOUT_PAGE_LOCATORS['checkout_form']
     webcommon.assert_element_visible(context, form_locator['type'], form_locator['locator'])
+    print ("✅ Checkout form is visible successfully")
 
-    # import pdb; pdb.set_trace()
 
 @when("I fill in the billing details form")
 def i_fill_in_the_billing_details_form(context):

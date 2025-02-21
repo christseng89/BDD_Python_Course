@@ -26,6 +26,8 @@ def go_to(url, browser_type=None):
     chrome_options.add_argument("--ignore-certificate-errors")
     chrome_options.add_argument("--ignore-ssl-errors=yes")
     chrome_options.add_argument("--disable-gpu")
+    # chrome_options.add_argument("--disable-features=UseTFLiteForSpellCheck")
+    chrome_options.add_argument('--log-level=1')
 
     # Create WebDriver instance
     driver = webdriver.Chrome(service=Service(chrome_driver_path), options=chrome_options)

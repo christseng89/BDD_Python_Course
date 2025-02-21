@@ -5,20 +5,20 @@ import logging as logger
 import time
 
 
-@when("I select 'Free shipping' option")
-def i_select_free_shipping_option(context):
-    """
-
-    """
-    logger.info("")
-    logger.info("")
-    logger.info("33333")
-    logger.info("About to select the free shipping option")
-    free_ship = CART_PAGE_LOCATORS['free_shipping_radio']
-    webcommon.click(context, free_ship['type'], free_ship['locator'])
-
-    webcommon.assert_radio_is_selected(context, free_ship['type'], free_ship['locator'])
-    logger.info("Successfully selected the free shipping option")
+# @when("I select 'Free shipping' option")
+# def i_select_free_shipping_option(context):
+#     """
+#
+#     """
+#     logger.info("")
+#     logger.info("")
+#     logger.info("33333")
+#     logger.info("About to select the free shipping option")
+#     free_ship = CART_PAGE_LOCATORS['free_shipping_radio']
+#     webcommon.click(context, free_ship['type'], free_ship['locator'])
+#
+#     webcommon.assert_radio_is_selected(context, free_ship['type'], free_ship['locator'])
+#     logger.info("Successfully selected the free shipping option")
 
 @when("I click on 'Proceed to checkout' button in the cart page")
 def i_click_on_proceed_to_checkout_button_in_the_cart_page(context):

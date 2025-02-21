@@ -10,7 +10,7 @@
       And I click on cart in the top nav bar and verify cart page opens
 #      And I select 'Free shipping' option
       And I click on 'Proceed to Checkout' button in the cart page
-#      And I verify 'Checkout' page is loaded
+      And I verify 'Checkout' page is loaded
 #      And I fill in the billing details form
 #      And I click on 'Place order' button in the checkout page
 #      Then order received page should load with correct data

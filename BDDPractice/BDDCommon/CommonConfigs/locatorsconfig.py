@@ -32,9 +32,8 @@ CART_PAGE_LOCATORS = {
 }
 
 CHECKOUT_PAGE_LOCATORS = {
-
-    'page_header': {'type': 'css selector', 'locator': 'header.entry-header h1.entry-title'},
-    'checkout_form': {'type': 'css selector', 'locator': 'form[name="checkout"]'},
+    'page_header': {'type': 'css selector', 'locator': 'h1.entry-title'},
+    'checkout_form': {'type': 'css selector', 'locator': 'form.wc-block-components-form.wc-block-checkout__form'}, # Updated locator
     'billing_f_name_input': {'type': 'css selector', 'locator': 'input#billing_first_name'},
     'billing_l_name_input': {'type': 'css selector', 'locator': 'input#billing_last_name'},
     'billing_company_input': {'type': 'css selector', 'locator': 'input#billing_company'},
@@ -44,9 +43,9 @@ CHECKOUT_PAGE_LOCATORS = {
     'billing_zip_input': {'type': 'css selector', 'locator': 'input#billing_postcode'},
     'billing_phone_input': {'type': 'css selector', 'locator': 'input#billing_phone'},
     'billing_email_input': {'type': 'css selector', 'locator': 'input#billing_email'},
-
     'place_order_btn': {'type': 'css selector', 'locator': 'button#place_order'}
 }
+
 
 ORDER_RECEIVED_LOCATORS = {
     'page_header': {'type': 'css selector', 'locator': 'header.entry-header h1.entry-title'},
