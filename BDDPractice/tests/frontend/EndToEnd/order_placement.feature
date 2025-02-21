@@ -14,4 +14,4 @@
       And I fill in the billing details form
       And I click on 'Place order' button in the checkout page
       Then order received page should load with correct data
-#      Then I verify order is created in database
+      Then I verify order is created in database

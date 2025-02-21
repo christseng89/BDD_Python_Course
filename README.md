@@ -764,6 +764,8 @@ behave tests\backend\users\ --no-capture --no-logcapture -t TCID-29
     tests\frontend\CartPage\steps\cart_page_steps.py
     tests\frontend\CheckoutPage\steps\checkout_page_steps.py
     tests\frontend\OrderReceivedPage\steps\order_received_page_steps.py
+    BDDCommon\CommonSteps\order_api_steps.py
+    
 - Locator
     BDDCommon\CommonConfigs\locatorsconfig.py # Need to be fixed by AI (if error comes)
 
