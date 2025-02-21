@@ -1,3 +1,5 @@
+import time
+
 from behave import when
 from BDDCommon.CommonConfigs.locatorsconfig import CHECKOUT_PAGE_LOCATORS
 from BDDCommon.CommonFuncs import webcommon
@@ -63,6 +65,7 @@ def i_fill_in_the_billing_details_form(context):
 def i_click_on_place_order_button_in_the_checkout_page(context):
 
     btn_locator = CHECKOUT_PAGE_LOCATORS['place_order_btn']
+    time.sleep(2)
     webcommon.click(context, btn_locator['type'], btn_locator['locator'])
 
     print ("✅ Place Order button clicked successfully")
