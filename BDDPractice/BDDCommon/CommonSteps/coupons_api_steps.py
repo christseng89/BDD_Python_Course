@@ -4,10 +4,6 @@ from BDDCommon.CommonAPI import coupons_api
 from BDDCommon.CommonDAO.couponsDAO import CouponsDAO
 import json
 
-
-
-
-
 @step('I create a "{discount_type}" coupon')
 def create_a_coupon_with_given_discount_type(context, discount_type):
     data = {
@@ -22,6 +18,8 @@ def create_a_coupon_with_given_discount_type(context, discount_type):
     rs_api = coupons_api.create_coupon(data)
 
     context.new_coupon_info = rs_api
+    coupon_id = context.new_coupon_info['id']
+    print(f"✅ New coupon created: {data['code']}, id: {coupon_id}")
 
 
 @step("the coupon should exist in database")
@@ -37,6 +35,7 @@ def the_coupon_should_exist_in_database(context):
         f"Unexpected 'discount_type' for new coupon. " \
          f"Expected: {context.expected_discount_type}, Actual: {coupon_meta['discount_type']}"
 
+    print(f"✅ Coupon found in database. Coupon id: {coupon_id}")
 
 @step("I create a coupon with given parameters")
 def i_create_a_coupon_with_given_parameters(context):

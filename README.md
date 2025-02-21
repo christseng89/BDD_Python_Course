@@ -779,3 +779,17 @@ behave tests\frontend\EndToEnd --no-capture --no-logcapture -t TCID-33
 ```cmd
 behave tests\frontend\EndToEnd --no-capture --no-logcapture -t TCID-33 -D browser=headlesschrome
 ```
+
+### TCID-36 to 40 - 1 (BE) Coupons API
+https://woocommerce.github.io/woocommerce-rest-api-docs/#create-a-coupon
+
+```cmd
+- Feature file
+  tests\backend\coupons\create_coupon_smoke.feature
+- Step definition
+    BDDCommon\CommonSteps\coupons_api_steps.py
+```
+
+```cmd
+behave tests\backend\coupons\create_coupon_smoke.feature --no-capture --no-logcapture -t TCID-36
+```

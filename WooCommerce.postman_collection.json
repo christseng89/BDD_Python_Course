@@ -193,6 +193,201 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "List all customers",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "consumerSecret",
+							"value": "cs_718fb79852941b5cfe7288788296626c3a6558ae",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "ck_b05a8107856c44b688ae9f6263a549dccc84af16",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://mylocalwp.local/wp-json/wc/v3/customers",
+					"protocol": "http",
+					"host": [
+						"mylocalwp",
+						"local"
+					],
+					"path": [
+						"wp-json",
+						"wc",
+						"v3",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Force Delete a Customer",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "consumerSecret",
+							"value": "cs_718fb79852941b5cfe7288788296626c3a6558ae",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "ck_b05a8107856c44b688ae9f6263a549dccc84af16",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://mylocalwp.local/wp-json/wc/v3/customers/18?force=true",
+					"protocol": "http",
+					"host": [
+						"mylocalwp",
+						"local"
+					],
+					"path": [
+						"wp-json",
+						"wc",
+						"v3",
+						"customers",
+						"18"
+					],
+					"query": [
+						{
+							"key": "force",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a coupon",
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "consumerSecret",
+							"value": "cs_718fb79852941b5cfe7288788296626c3a6558ae",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "ck_b05a8107856c44b688ae9f6263a549dccc84af16",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						},
+						{
+							"key": "addParamsToHeader",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"code\": \"10off12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://mylocalwp.local/wp-json/wc/v3/coupons",
+					"protocol": "http",
+					"host": [
+						"mylocalwp",
+						"local"
+					],
+					"path": [
+						"wp-json",
+						"wc",
+						"v3",
+						"coupons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a coupon",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
