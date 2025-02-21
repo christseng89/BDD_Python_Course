@@ -47,7 +47,8 @@ def i_create_a_coupon_with_given_parameters(context):
     rs_api = coupons_api.create_coupon(data)
 
     context.new_coupon_info = rs_api
-
+    coupon_id = context.new_coupon_info['id']
+    print(f"✅ New coupon created: {data['code']}, id: {coupon_id}")
 
 @step("I verify the given metadata in database")
 def i_verify_the_given_metadata_in_database(context):
@@ -70,6 +71,8 @@ def i_verify_the_given_metadata_in_database(context):
 
     if failed_fields:
         raise Exception(f"Metadata when creating coupon unexpected. Failed fields: {failed_fields}")
+
+    print(f"✅ Coupon found in database. Coupon id: {coupon_id}")
 
 @step("I get a valid {pct}% off coupon")
 def i_get_a_valid_pct_coupon(context, pct):

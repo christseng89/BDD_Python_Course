@@ -793,3 +793,29 @@ https://woocommerce.github.io/woocommerce-rest-api-docs/#create-a-coupon
 ```cmd
 behave tests\backend\coupons\create_coupon_smoke.feature --no-capture --no-logcapture -t TCID-36
 ```
+
+### TCID-43 (BE) Verify coupon metadata recorded correctly (field by field)
+Using context.text feature to pass the parameters
+```code
+      Given I create a coupon with given parameters
+             """
+             {"discount_type": "fixed_cart",
+             "amount": "50",
+             "individual_use": "false",
+             "usage_count": 10,
+             "usage_limit": 5,
+             "exclude_sale_items": "True"
+             }
+            """
+```
+
+```note
+- Feature file
+  tests\backend\coupons\create_coupon_verify_metadata.feature
+- Step definition
+    BDDCommon\CommonSteps\coupons_api_steps.py
+    
+```
+```cmd
+behave tests\backend\coupons\create_coupon_verify_metadata.feature --no-capture --no-logcapture -t TCID-43
+```
