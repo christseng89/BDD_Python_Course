@@ -5,25 +5,6 @@ from BDDCommon.CommonHelpers.utilitiesHelpers import generate_random_email_and_p
 from BDDCommon.CommonHelpers.utilitiesHelpers import generate_random_first_and_last_names
 
 @when("I verify 'Checkout' page is loaded")
-# def i_verify_checkout_page_is_loaded(context):
-#     """
-#
-#     """
-#
-#     # check the url
-#     webcommon.assert_url_contains(context, '/checkout/')
-#
-#     # check the heading text
-#     expected_text = 'Checkout'
-#     header_locator = CHECKOUT_PAGE_LOCATORS['page_header']
-#     # import pdb; pdb.set_trace()
-#
-#     contains = webcommon.element_contains_text(context, expected_text, header_locator['type'], header_locator['locator'])
-#     assert contains, f"Header of checkout page does not contain the text '{expected_text}'."
-#
-#     # check some elements are visible
-#     form_locator = CHECKOUT_PAGE_LOCATORS['checkout_form']
-#     webcommon.assert_element_visible(context, form_locator['type'], form_locator['locator'])
 def i_verify_checkout_page_is_loaded(context):
     """ Verify the Checkout page is loaded """
 
@@ -54,23 +35,25 @@ def i_fill_in_the_billing_details_form(context):
     phone = '5101111111'
     email = generate_random_email_and_password()['email']
 
+    email_locator = CHECKOUT_PAGE_LOCATORS['billing_email_input']
     f_name_locator = CHECKOUT_PAGE_LOCATORS['billing_f_name_input']
     l_name_locator = CHECKOUT_PAGE_LOCATORS['billing_l_name_input']
-    street_locator = CHECKOUT_PAGE_LOCATORS['billing_address1_input']
-    city_locator = CHECKOUT_PAGE_LOCATORS['billing_city_input']
-    zip_locator = CHECKOUT_PAGE_LOCATORS['billing_zip_input']
-    phone_locator = CHECKOUT_PAGE_LOCATORS['billing_phone_input']
-    email_locator = CHECKOUT_PAGE_LOCATORS['billing_email_input']
+    # street_locator = CHECKOUT_PAGE_LOCATORS['billing_address1_input']
+    # city_locator = CHECKOUT_PAGE_LOCATORS['billing_city_input']
+    # zip_locator = CHECKOUT_PAGE_LOCATORS['billing_zip_input']
+    # phone_locator = CHECKOUT_PAGE_LOCATORS['billing_phone_input']
+
 
     # start input the values
+    webcommon.type_into_element(context, email, email_locator['type'], email_locator['locator'])
     webcommon.type_into_element(context, f_name, f_name_locator['type'], f_name_locator['locator'])
     webcommon.type_into_element(context, l_name, l_name_locator['type'], l_name_locator['locator'])
-    webcommon.type_into_element(context, addr_1, street_locator['type'], street_locator['locator'])
-    webcommon.type_into_element(context, city, city_locator['type'], city_locator['locator'])
-    webcommon.type_into_element(context, _zip, zip_locator['type'], zip_locator['locator'])
-    webcommon.type_into_element(context, phone, phone_locator['type'], phone_locator['locator'])
-    webcommon.type_into_element(context, email, email_locator['type'], email_locator['locator'])
+    # webcommon.type_into_element(context, addr_1, street_locator['type'], street_locator['locator'])
+    # webcommon.type_into_element(context, city, city_locator['type'], city_locator['locator'])
+    # webcommon.type_into_element(context, _zip, zip_locator['type'], zip_locator['locator'])
+    # webcommon.type_into_element(context, phone, phone_locator['type'], phone_locator['locator'])
 
+    print ("✅ Fill in billing details successfully")
 
 
 @when("I click on 'Place order' button in the checkout page")

@@ -34,15 +34,18 @@ CART_PAGE_LOCATORS = {
 CHECKOUT_PAGE_LOCATORS = {
     'page_header': {'type': 'css selector', 'locator': 'h1.entry-title'},
     'checkout_form': {'type': 'css selector', 'locator': 'form.wc-block-components-form.wc-block-checkout__form'}, # Updated locator
-    'billing_f_name_input': {'type': 'css selector', 'locator': 'input#billing_first_name'},
-    'billing_l_name_input': {'type': 'css selector', 'locator': 'input#billing_last_name'},
+    'billing_f_name_input': {'type': 'css selector',
+                             'locator': 'input#billing_first_name, input[name="billing_first_name"], input[autocomplete="given-name"]'},
+    'billing_l_name_input': {'type': 'css selector',
+                             'locator': 'input#billing_last_name, input[name="billing_last_name"], input[autocomplete="family-name"]'},
     'billing_company_input': {'type': 'css selector', 'locator': 'input#billing_company'},
     'billing_address1_input': {'type': 'css selector', 'locator': 'input#billing_address_1'},
     'billing_address2_input': {'type': 'css selector', 'locator': 'input#billing_address_2'},
     'billing_city_input': {'type': 'css selector', 'locator': 'input#billing_city'},
     'billing_zip_input': {'type': 'css selector', 'locator': 'input#billing_postcode'},
     'billing_phone_input': {'type': 'css selector', 'locator': 'input#billing_phone'},
-    'billing_email_input': {'type': 'css selector', 'locator': 'input#billing_email'},
+    # 'billing_email_input': {'type': 'css selector', 'locator': 'input#billing_email'},
+    'billing_email_input': {'type': 'css selector', 'locator': 'input#email'},
     'place_order_btn': {'type': 'css selector', 'locator': 'button#place_order'}
 }
 
