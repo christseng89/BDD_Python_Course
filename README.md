@@ -774,3 +774,8 @@ behave tests\backend\users\ --no-capture --no-logcapture -t TCID-29
 ```cmd
 behave tests\frontend\EndToEnd --no-capture --no-logcapture -t TCID-33
 ```
+
+### How to run WebDriver in headless browser (headless Chrome)
+```cmd
+behave tests\frontend\EndToEnd --no-capture --no-logcapture -t TCID-33 -D browser=headlesschrome
+```
