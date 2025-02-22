@@ -13,4 +13,4 @@
         And I click on 'Proceed to Checkout' button in the cart page
         And I get a valid 50% off coupon
         And I apply the coupon to the cart
-#        Then the total should be reduced by 50%
+        Then the total should be reduced by 50%

@@ -840,10 +840,3 @@ behave tests\backend\coupons\create_coupon_verify_metadata.feature --no-capture 
 ```cmd
 behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-44
 ```
-
-```css selector locator
-'add_a_coupon_button': {'type': 'css selector', 'locator': 'button.wc-block-components-panel__button'}
-'coupon_code_field': {'type': 'css selector', 'locator': 'input#wc-block-components-totals-coupon__input'}
-'apply_coupon_button': {'type': 'css selector', 'locator': 'button.wc-block-components-totals-coupon__button'}
-
-```
