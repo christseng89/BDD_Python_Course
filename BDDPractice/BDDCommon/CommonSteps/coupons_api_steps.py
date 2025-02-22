@@ -78,10 +78,12 @@ def i_verify_the_given_metadata_in_database(context):
 def i_get_a_valid_pct_coupon(context, pct):
     # Option 1: get it from db
     # Option 2: create a new one, and delete at teardown
-    # Option 3: hard code a coupon that will not expire or run out
+    # ✅ Option 3: hard code a coupon that will not expire or run out
 
     if int(pct) == 50:
         context.coupon_code = "TEST50"
     else:
         raise Exception("Not implemented")
 
+    # import pdb; pdb.set_trace()
+    print(f"✅ Get a valid {pct}% coupon code: '{context.coupon_code}'")

@@ -27,8 +27,10 @@ CART_PAGE_LOCATORS = {
     # FIX: Updated the correct selector for 'Proceed to Checkout'
     'proceed_to_checkout_btn': {'type': 'css selector', 'locator': 'a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained'},
     'total_cart_value': {'type': 'css selector', 'locator': 'div.wc-block-components-totals-item__value span.wc-block-formatted-money-amount'},
-    'coupon_code_field': {'type': 'css selector', 'locator': 'div.coupon input#coupon_code'},
-    'apply_coupon_button': {'type': 'css selector', 'locator': 'div.coupon button[name="apply_coupon"]'}
+    'add_a_coupon_button': {'type': 'css selector', 'locator': 'div.wc-block-components-panel__button'},
+    # 'coupon_code_field': {'type': 'css selector', 'locator': 'input#wc-block-components-totals-coupon__input'},
+    'coupon_code_field': {'type': 'css selector', 'locator': 'input#wc-block-components-totals-coupon__input-coupon'},
+    'apply_coupon_button': {'type': 'css selector', 'locator': 'button.wc-block-components-totals-coupon__button'}
 }
 
 CHECKOUT_PAGE_LOCATORS = {

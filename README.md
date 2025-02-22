@@ -827,8 +827,23 @@ behave tests\backend\coupons\create_coupon_verify_metadata.feature --no-capture 
 - Step definition
     tests\frontend\CartPage\steps\cart_page_steps.py
     tests\frontend\CheckoutPage\steps\checkout_page_steps.py
+    BDDCommon\CommonSteps\coupons_api_steps.py
+- Postman
+    Create a 50% coupon => TEST4 / body
+        {
+          "code": "TEST50",
+          "discount_type": "percent",
+          "amount": "50"
+        }
 ```
 
 ```cmd
 behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-44
+```
+
+```css selector locator
+'add_a_coupon_button': {'type': 'css selector', 'locator': 'button.wc-block-components-panel__button'}
+'coupon_code_field': {'type': 'css selector', 'locator': 'input#wc-block-components-totals-coupon__input'}
+'apply_coupon_button': {'type': 'css selector', 'locator': 'button.wc-block-components-totals-coupon__button'}
+
 ```

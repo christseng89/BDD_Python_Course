@@ -11,8 +11,6 @@
 ##        And I select 'Free shipping' option
         And I get the total dollar amount of the cart
         And I click on 'Proceed to Checkout' button in the cart page
-
-#        And I get a valid 50% off coupon
-#        And I apply the coupon to the cart
-#
+        And I get a valid 50% off coupon
+        And I apply the coupon to the cart
 #        Then the total should be reduced by 50%

@@ -36,16 +36,45 @@ def i_get_the_total_dollar_amount_of_the_cart(context):
 
     print(f"✅ Cart total amount: {context.cart_total}")
 
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
+
+
 @when("I apply the coupon to the cart")
 def i_apply_the_coupon_to_the_cart(context):
+    print(f"✅ Applying coupon code: {context.coupon_code} starts...")
 
+    driver = context.driver  # Ensure context.driver is set
+    wait = WebDriverWait(driver, 10)
+
+    dropdown = None  # Define dropdown at the beginning to avoid UnboundLocalError
+    add_a_coupon_locator = CART_PAGE_LOCATORS['add_a_coupon_button']
+    dropdown = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, add_a_coupon_locator['locator'])))
+    # time.sleep(2)
+    driver.execute_script("arguments[0].scrollIntoView(true);", dropdown)
+    wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, add_a_coupon_locator['locator'])))
+    dropdown.click()
+    print("  ✅ Clicked on 'Add a coupon' button")
+
+    # Wait for the coupon input field
     coupon_field_locator = CART_PAGE_LOCATORS['coupon_code_field']
+    # wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, coupon_field_locator['locator'])))
+    time.sleep(2)
+    # Enter the coupon code
+    webcommon.type_into_element(context, context.coupon_code, coupon_field_locator['type'],
+                                coupon_field_locator['locator'])
+    print(f"  ✅ Entered coupon {context.coupon_code}")
+
     apply_coupon_locator = CART_PAGE_LOCATORS['apply_coupon_button']
-
-    webcommon.type_into_element(context, context.coupon_code, coupon_field_locator['type'], coupon_field_locator['locator'])
     webcommon.click(context, apply_coupon_locator['type'], apply_coupon_locator['locator'])
+    print("  ✅ Clicked on 'Apply coupon' button")
 
-    print(f"✅ Applied coupon code: {context.coupon_code}")
+    print(f"✅ Applied coupon code: {context.coupon_code} successfully")
+    import pdb; pdb.set_trace()
+
 
 @then("the total should be reduced by {pct}%")
 def the_total_should_be_reduced_by_pct(context, pct):
