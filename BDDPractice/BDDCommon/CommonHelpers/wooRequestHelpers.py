@@ -18,10 +18,22 @@ class WooRequestsHelper(object):
             version="wc/v3",
             timeout=30  # Increased timeout from 5 to 30 seconds
         )
+
     def assert_satus_code(self):
-        assert self.rs.status_code == self.expected_status_code, "Bad status code. Endpoint: {}, Parmas: {}. " \
-        "Actual status code: {}, Expected status code: {}, Response body: {}".format(self.wc_endpoint, self.params, self.rs.status_code,
-                                                                  self.expected_status_code, self.rs.json())
+        try:
+            response_body = self.rs.json()
+        except ValueError:
+            # Fallback to raw text if JSON decoding fails
+            response_body = self.rs.text
+        except Exception as e:
+            print (f"❌❌❌ Error occurred while decoding response: {e}")
+            sys.exit(1)
+
+        assert self.rs.status_code == self.expected_status_code, (
+            "Bad status code. Endpoint: {}, Params: {}. "
+            "Actual status code: {}, Expected status code: {}, Response body: {}"
+        ).format(self.wc_endpoint, self.params, self.rs.status_code,
+                 self.expected_status_code, response_body)
 
     def get(self, wc_endpoint, params=None, expected_status_code=200):
         """

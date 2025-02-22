@@ -4,23 +4,7 @@ from BDDCommon.CommonFuncs import webcommon
 import logging as logger
 import time
 
-
-# @when("I select 'Free shipping' option")
-# def i_select_free_shipping_option(context):
-#     """
-#
-#     """
-#     logger.info("")
-#     logger.info("")
-#     logger.info("33333")
-#     logger.info("About to select the free shipping option")
-#     free_ship = CART_PAGE_LOCATORS['free_shipping_radio']
-#     webcommon.click(context, free_ship['type'], free_ship['locator'])
-#
-#     webcommon.assert_radio_is_selected(context, free_ship['type'], free_ship['locator'])
-#     logger.info("Successfully selected the free shipping option")
-
-@when("I click on 'Proceed to checkout' button in the cart page")
+@when("I click on 'Proceed to Checkout' button in the cart page")
 def i_click_on_proceed_to_checkout_button_in_the_cart_page(context):
     """
 
@@ -40,6 +24,7 @@ def i_click_on_proceed_to_checkout_button_in_the_cart_page(context):
         raise Exception(f"Failed to click on 'Proceed to checkout' after retrying '{max_try}' times.")
     
     logger.info("✅ Clicked on 'Proceed to checkout' button in the cart page")
+    print("✅ Clicked on 'Proceed to checkout' button in the cart page")
 
 @when("I get the total dollar amount of the cart")
 def i_get_the_total_dollar_amount_of_the_cart(context):
@@ -49,6 +34,7 @@ def i_get_the_total_dollar_amount_of_the_cart(context):
     total_raw = webcommon.get_element_text(context, total_locator['type'], total_locator['locator'])
     context.cart_total = total_raw.replace('$', '')
 
+    print(f"✅ Cart total amount: {context.cart_total}")
 
 @when("I apply the coupon to the cart")
 def i_apply_the_coupon_to_the_cart(context):
@@ -59,6 +45,7 @@ def i_apply_the_coupon_to_the_cart(context):
     webcommon.type_into_element(context, context.coupon_code, coupon_field_locator['type'], coupon_field_locator['locator'])
     webcommon.click(context, apply_coupon_locator['type'], apply_coupon_locator['locator'])
 
+    print(f"✅ Applied coupon code: {context.coupon_code}")
 
 @then("the total should be reduced by {pct}%")
 def the_total_should_be_reduced_by_pct(context, pct):
@@ -73,3 +60,4 @@ def the_total_should_be_reduced_by_pct(context, pct):
         f"Cart total after applying {pct}% coupon is not as expected." \
         f"Original: {original_total}, Expected: {expected_new_total}, Actual: {new_total}"
 
+    print(f"✅ Cart total reduced by {pct}%")

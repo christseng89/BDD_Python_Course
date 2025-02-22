@@ -772,12 +772,12 @@ behave tests\backend\users\ --no-capture --no-logcapture -t TCID-29
 ```
 
 ```cmd
-behave tests\frontend\EndToEnd --no-capture --no-logcapture -t TCID-33
+behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-33
 ```
 
 ### How to run WebDriver in headless browser (headless Chrome)
 ```cmd
-behave tests\frontend\EndToEnd --no-capture --no-logcapture -t TCID-33 -D browser=headlesschrome
+behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-33 -D browser=headlesschrome
 ```
 
 ### TCID-36 to 40 - 1 (BE) Coupons API
@@ -818,4 +818,17 @@ Using context.text feature to pass the parameters
 ```
 ```cmd
 behave tests\backend\coupons\create_coupon_verify_metadata.feature --no-capture --no-logcapture -t TCID-43
+```
+
+### TCID-44-2 (FE) Add items to cart and get total with 50% discount
+```note
+- Feature file
+  tests\frontend\EndToEnd\add_valid_coupons_to_cart.feature
+- Step definition
+    tests\frontend\CartPage\steps\cart_page_steps.py
+    tests\frontend\CheckoutPage\steps\checkout_page_steps.py
+```
+
+```cmd
+behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-44
 ```
