@@ -10,6 +10,7 @@ def i_add_random_item_to_cart_from_the_homepage(context, qty):
 
     # logger.info("1111")
     # logger.info("1111")
+    time.sleep(1)
     logger.info(f"✅ Adding {qty} items to cart")
 
 
