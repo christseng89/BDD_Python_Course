@@ -71,7 +71,6 @@ def i_apply_the_coupon_to_the_cart(context):
     print("  ✅ Clicked on 'Apply coupon' button")
 
     print(f"✅ Applied coupon code: {context.coupon_code} successfully")
-    # import pdb; pdb.set_trace()
 
 import math
 @then("the total should be reduced by {pct}%")
@@ -84,7 +83,6 @@ def the_total_should_be_reduced_by_pct(context, pct):
     # Recalculate the total after applying the coupon
     context.execute_steps("when I get the total dollar amount of the cart")
     new_total = context.cart_total
-    # import pdb; pdb.set_trace()
 
     assert float(new_total) == expected_new_total, \
         f"❌ Cart total after applying {pct}% coupon is not as expected. " \
