@@ -840,3 +840,19 @@ behave tests\backend\coupons\create_coupon_verify_metadata.feature --no-capture 
 ```cmd
 behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-44
 ```
+
+## Final Test (using wait.until() method in webcommon.py)
+```cmd
+behave tests\backend\products\ --no-capture --no-logcapture -t TCID-24
+behave tests\backend\products\ --no-capture --no-logcapture -t TCID-25 
+behave tests\backend\users\ --no-capture --no-logcapture -t TCID-29
+
+REM TCID-33 with Selenium
+behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-33
+
+behave tests\backend\coupons\ --no-capture --no-logcapture -t TCID-36
+behave tests\backend\coupons\ --no-capture --no-logcapture -t TCID-43
+
+REM TCID-44 with Selenium
+behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-44
+```
