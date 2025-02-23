@@ -843,16 +843,26 @@ behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-44
 
 ## Final Test (using wait.until() method in webcommon.py)
 ```cmd
+REM DB
 behave tests\backend\products\ --no-capture --no-logcapture -t TCID-24
 behave tests\backend\products\ --no-capture --no-logcapture -t TCID-25 
+
+REM API
 behave tests\backend\users\ --no-capture --no-logcapture -t TCID-29
 
-REM TCID-33 with Selenium
+REM Selenium
 behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-33
 
+REM API + DB
 behave tests\backend\coupons\ --no-capture --no-logcapture -t TCID-36
 behave tests\backend\coupons\ --no-capture --no-logcapture -t TCID-43
 
-REM TCID-44 with Selenium
+REM Selenium
 behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-44
+```
+
+## Proper error handlings when LocalWP is not started
+```cmd
+BDDCommon/CommonHelpers/wooRequestHelpers.py
+BDDCommon/CommonSteps/coupons_api_steps.py
 ```
