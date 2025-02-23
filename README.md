@@ -865,6 +865,9 @@ behave tests\frontend\EndToEnd\ --no-capture --no-logcapture -t TCID-44
 ```cmd
 BDDCommon/CommonHelpers/wooRequestHelpers.py
 BDDCommon/CommonSteps/coupons_api_steps.py
+BDDCommon/CommonFuncs/webcommon.py
+BDDCommon/CommonSteps/coupons_api_steps.py
+
 tests/frontend/HomePage/steps/home_page_steps.py
 
 ```

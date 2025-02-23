@@ -29,7 +29,7 @@ LOCATOR_MAPPING = {
     "css selector": By.CSS_SELECTOR,
 }
 
-TIMEOUT = 20
+TIMEOUT = 15
 
 def go_to(context, location, **kwargs):
     """
@@ -153,7 +153,8 @@ def find_elements(context, locator_attribute, locator_text, timeout=TIMEOUT):
         )
         return elements
     except Exception as e:
-        raise Exception(e)
+        print(f"❌ Error: element '{locator_text}' not found within '{timeout}' seconds.")
+        sys.exit(1)
 
 def is_element_visible(element):
     """

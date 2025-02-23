@@ -28,11 +28,17 @@ class WooRequestsHelper(object):
         except Exception as e:
             raise Exception(f"❌ Error occurred while decoding response: {e}")
 
+        # Exit immediately if a 4xx client error is encountered.
+        if 400 <= self.rs.status_code < 500:
+            print(f"❌ Client error: Received status code '{self.rs.status_code}' for endpoint '/{self.wc_endpoint}'.")
+            sys.exit(1)
+
+        # Assert that the status code matches the expected status code.
         assert self.rs.status_code == self.expected_status_code, (
-            "Bad status code. Endpoint: {}, Params: {}. "
-            "Actual status code: {}, Expected status code: {}, Response body: {}"
-        ).format(self.wc_endpoint, self.params, self.rs.status_code,
-                 self.expected_status_code, response_body)
+            f"❌ Bad status code '{self.rs.status_code}' and expected status code: '{self.expected_status_code}' for endpoint: '/{self.wc_endpoint}'."
+        )
+
+
 
     def get(self, wc_endpoint, params=None, expected_status_code=200):
         try:
@@ -65,7 +71,7 @@ class WooRequestsHelper(object):
 
         Returns:
         - dict: JSON response from WooCommerce API.
-        """        
+        """
         logger.info(f"Params: {params}")
         attempt = 0
 
@@ -82,16 +88,16 @@ class WooRequestsHelper(object):
 
             except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError) as e:
                 attempt += 1
-                logger.warning(f"Error occurred on POST attempt {attempt}/{retries}. Retrying in {wait_time} seconds...")
+                logger.warning(
+                    f"Error occurred on POST attempt {attempt}/{retries}. Retrying in {wait_time} seconds..."
+                )
                 time.sleep(wait_time)
             except requests.exceptions.RequestException as e:
                 logger.error(f"❌ Request exception during POST request: {e}")
                 raise Exception(f"❌ POST request to {wc_endpoint} failed: {e}")
 
-        # If all retries fail, raise an exception
-            except Exception as e:
-                print (f"❌ POST request failed after 3 retries due to connection issues.")
-                sys.exit(1)
+        logger.error(f"❌ POST request failed after {retries} retries due to connection issues.")
+        sys.exit(1)
 
     def delete(self):
         pass

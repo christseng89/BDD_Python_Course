@@ -3,7 +3,7 @@ from BDDCommon.CommonHelpers.utilitiesHelpers import generate_random_coupon_code
 from BDDCommon.CommonAPI import coupons_api
 from BDDCommon.CommonDAO.couponsDAO import CouponsDAO
 import json
-import sys
+# import sys
 
 
 @step('I create a "{discount_type}" coupon')
@@ -25,8 +25,8 @@ def create_a_coupon_with_given_discount_type(context, discount_type):
             raise Exception("Coupon API returned None. Please verify the API server and input parameters.")
 
     except Exception as e:
-        print (f"❌ Exception Error: {e}")
-        sys.exit(1)
+        raise Exception (f"❌ Exception Error: {e}")
+        # sys.exit(1)
 
     context.new_coupon_info = rs_api
     coupon_id = context.new_coupon_info['id']
@@ -66,8 +66,8 @@ def i_create_a_coupon_with_given_parameters(context):
             raise Exception("Coupon API returned None. Please verify the API server and input parameters.")
 
     except Exception as e:
-        print (f"❌ Exception Error: {e}")
-        sys.exit(1)
+        raise Exception (f"❌ Exception Error: {e}")
+        # sys.exit(1)
 
     context.new_coupon_info = rs_api
     coupon_id = context.new_coupon_info['id']
